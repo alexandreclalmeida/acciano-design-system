@@ -4,7 +4,7 @@ A personal design system — tokens, components, and documentation in one place.
 
 Acciano started as a UI engineering study and evolved into a complete design system: structured tokens, 50+ React components, and interactive documentation via Storybook. Every component originates from a Figma UI Kit and is implemented without third-party component libraries.
 
-**[View in Figma](https://www.figma.com/design/uiFtDBaCNOzuTtDZgza3Zb/Acciano-UI-Design-Kit)** · **[Storybook](https://placeholder-storybook-url.com)** · **[LinkedIn](https://www.linkedin.com/in/alexandre-lopes-almeida)**
+**[View in Figma](https://www.figma.com/design/uiFtDBaCNOzuTtDZgza3Zb/Acciano-UI-Design-Kit)** · **[Storybook](https://main--6a0dbefde23c1c4677b98a9e.chromatic.com)** · **[LinkedIn](https://www.linkedin.com/in/alexandre-lopes-almeida)**
 
 ---
 
