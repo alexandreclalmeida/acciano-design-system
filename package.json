@@ -13,9 +13,10 @@
     "build:icons": "npm run build --workspace=packages/icons",
     "build:logos": "npm run build --workspace=packages/logos",
     "storybook": "npm run storybook --workspace=apps/storybook",
-    "build:storybook": "npm run build-storybook --workspace=apps/storybook",
+    "build:storybook": "npm run build --workspace=apps/storybook",
     "lint": "npm run lint --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "chromatic": "npx chromatic --build-script-name=build --storybook-build-dir=apps/storybook/storybook-static"
   },
   "engines": {
     "node": ">=20.19.0",
