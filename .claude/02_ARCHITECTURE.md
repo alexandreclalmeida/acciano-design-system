@@ -73,7 +73,8 @@ acciano-design-system/
 │   └── storybook/                  # Documentação interativa
 │       ├── .storybook/
 │       │   ├── main.ts
-│       │   └── preview.ts
+│       │   ├── preview.ts
+│       │   └── globals.d.ts        # declare module "*.css" — suprime erros TS nos imports de CSS
 │       └── package.json
 │
 ├── docs/                           # Documentação interna do projeto

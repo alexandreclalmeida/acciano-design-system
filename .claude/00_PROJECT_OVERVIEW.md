@@ -21,7 +21,7 @@ O Acciano serve como:
 
 - ✅ UI Kit no Figma (foundations, componentes e variáveis bem avançados)
 - ✅ Estrutura de monorepo com npm workspaces
-- ✅ Tokens de design (Style Dictionary → 6 arquivos CSS: foundations, typography desktop+mobile, color light+dark, elevation)
+- ✅ Tokens de design (Style Dictionary → 7 arquivos CSS: base, foundations, typography desktop+mobile, color light+dark, elevation)
 - ✅ Layout grids (tokens em foundations.css + story de documentação no Storybook)
 - ✅ 50+ componentes React implementados e documentados no Storybook
 - ✅ Storybook configurado com addon-themes (light/dark), addon-a11y, addon-docs, DocsPage global
@@ -141,9 +141,9 @@ Componentes que dependem ou compõem outros elementos do DS.
 - ✅ Chromatic configurado — Storybook publicado em `https://main--6a0dbefde23c1c4677b98a9e.chromatic.com`
 - ✅ GitHub Actions — workflow `chromatic.yml` com deploy automático a cada push para `main`
 - ✅ `CHROMATIC_PROJECT_TOKEN` configurado como secret no GitHub (não exposto no código)
-- ✅ Integração Figma ↔ Chromatic habilitada (linking de stories a componentes do Figma — a configurar progressivamente)
 - ✅ `docs/decisions/` — pasta criada para ADRs (Architecture Decision Records)
 - ✅ Ordem de build corrigida no monorepo: `tokens → icons → logos → components`
+- ✅ Auditoria de `title` nas stories (2026-05-20): todos os 56 `.stories.tsx` em `packages/components/src` têm `title:` explícito no meta
 
 ---
 
