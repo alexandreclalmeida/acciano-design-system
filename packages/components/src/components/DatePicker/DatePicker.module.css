@@ -1,0 +1,483 @@
+/* ─── Root ───────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4px);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ─── Label ───────────────────────────────────── */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: 0 var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  cursor: default;
+}
+
+.root--disabled .label {
+  color: var(--color-text-disabled);
+}
+
+.labelText {
+  white-space: nowrap;
+}
+
+.labelRequired {
+  color: var(--color-text-warning);
+}
+
+.labelOptional {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Field wrap (focus ring host) ───────────── */
+
+.fieldWrap {
+  position: relative;
+  width: 100%;
+}
+
+.fieldWrap::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -5px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.fieldWrap:has(.field--critical)::after {
+  inset: -6px;
+}
+
+.fieldWrap:has(button:focus-visible)::after {
+  display: block;
+}
+
+/* ─── Field ───────────────────────────────────── */
+
+.field {
+  --_state-inset: -1px;
+
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-fill-inverse-high);
+  border: var(--border-1px) solid var(--color-stroke-high);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+}
+
+/* State overlay */
+.field::before {
+  content: '';
+  position: absolute;
+  inset: var(--_state-inset);
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.field:not(.field--disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.field:not(.field--disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* ─── Critical ─────────────────────────────────── */
+
+.field--critical {
+  --_state-inset: -2px;
+
+  background-color: var(--color-fill-critical-low);
+  border-width: var(--border-2px);
+  border-color: var(--color-stroke-critical-high);
+}
+
+/* ─── Disabled ─────────────────────────────────── */
+
+.field--disabled {
+  border-color: var(--color-stroke-disabled);
+  cursor: default;
+}
+
+/* ─── Content ─────────────────────────────────── */
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--spacing-8px);
+  height: 100%;
+  min-width: 0;
+  padding: 0 var(--spacing-16px);
+  border-radius: inherit;
+}
+
+/* ─── Value text ─────────────────────────────── */
+
+.valueText {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.valueText--disabled {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Calendar icon ──────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.field--disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Helper ─────────────────────────────────── */
+
+.helper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+.helper--critical {
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-text-critical);
+}
+
+.helper--disabled {
+  color: var(--color-text-disabled);
+}
+
+.helperIcon {
+  flex-shrink: 0;
+  color: var(--color-icon-critical);
+}
+
+/* ─── Calendar panel ─────────────────────────── */
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-background-overlay);
+  border: var(--border-1px) solid var(--color-stroke-low);
+  border-radius: var(--radius-lg);
+  overflow: clip;
+  padding: var(--spacing-16px) var(--spacing-12px);
+  box-shadow: var(--elevation-overlay);
+}
+
+/* ─── Month navigation ───────────────────────── */
+
+.calendarMonth {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.calendarNavBtn {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+}
+
+.calendarNavBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+  transition: background-color 0.1s;
+}
+
+.calendarNavBtn:hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.calendarNavBtn:active::before {
+  background-color: var(--color-fill-press);
+}
+
+.calendarNavBtn:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.calendarNavIcon {
+  position: relative;
+  color: var(--color-icon-neutral);
+}
+
+.calendarMonthLabel {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.calendarMonthText {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-lead);
+  color: var(--color-text-high);
+  white-space: nowrap;
+}
+
+/* ─── Week header ────────────────────────────── */
+
+.calendarWeek {
+  display: flex;
+  align-items: flex-start;
+  width: 336px;
+  flex-shrink: 0;
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+}
+
+.calendarWeekday {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.calendarWeekdayLabel {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Days grid ──────────────────────────────── */
+
+.calendarDays {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 336px;
+  flex-shrink: 0;
+  padding: var(--spacing-8px) 0;
+  row-gap: var(--spacing-8px);
+}
+
+/* ─── Day cell ───────────────────────────────── */
+
+.day {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
+}
+
+/* State overlay for interactive days */
+.day::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+  transition: background-color 0.1s;
+}
+
+/* Focus ring */
+.day:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+/* ─── Day: Default (weekday) ─────────────────── */
+
+.day--default:hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.day--default:active::before {
+  background-color: var(--color-fill-press);
+}
+
+.day--default .dayLabel {
+  color: var(--color-text-high);
+}
+
+/* ─── Day: Weekend ───────────────────────────── */
+
+.day--weekend:hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.day--weekend:active::before {
+  background-color: var(--color-fill-press);
+}
+
+.day--weekend .dayLabel {
+  color: var(--color-text-low);
+}
+
+/* ─── Day: Today ─────────────────────────────── */
+
+.day--today {
+  background-color: var(--color-fill-brand-high);
+}
+
+.day--today:hover::before {
+  background-color: var(--color-fill-inverse-hover);
+}
+
+.day--today:active::before {
+  background-color: var(--color-fill-inverse-press);
+}
+
+.day--today .dayLabel {
+  color: var(--color-text-inverse-high);
+}
+
+/* ─── Day: Selected ──────────────────────────── */
+
+.day--selected {
+  background-color: var(--color-fill-selected-low);
+}
+
+.day--selected:hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.day--selected:active::before {
+  background-color: var(--color-fill-press);
+}
+
+.day--selected .dayLabel {
+  color: var(--color-text-high);
+}
+
+/* ─── Day: Other (prev/next month) ───────────── */
+
+.day--other {
+  cursor: default;
+}
+
+.day--other .dayLabel {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Day label ──────────────────────────────── */
+
+.dayLabel {
+  position: relative;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ─── Event dot ──────────────────────────────── */
+
+.eventDot {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.eventDot--brand {
+  background-color: var(--color-fill-brand-high);
+}
+
+.eventDot--inverse {
+  background-color: var(--color-fill-inverse-high);
+}
+
+.eventDot--other {
+  background-color: var(--color-text-disabled);
+}

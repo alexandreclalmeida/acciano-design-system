@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  box-sizing: border-box;
+  background-color: var(--color-background-overlay);
+  border: var(--border-1px) solid var(--color-stroke-low);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8px) 1px;
+  box-shadow: var(--elevation-overlay);
+  overflow: hidden;
+}

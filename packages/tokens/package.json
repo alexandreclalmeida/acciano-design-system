@@ -1,0 +1,15 @@
+{
+  "name": "@acciano/tokens",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Design tokens do Acciano — gerados como CSS custom properties",
+  "main": "dist/tokens.css",
+  "scripts": {
+    "build": "node sd.config.js",
+    "build:watch": "node --watch sd.config.js"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.4.0"
+  }
+}

@@ -1,0 +1,253 @@
+/* ─── Base ───────────────────────────────────── */
+
+.root {
+  --btn-radius: var(--radius-lg);
+  --btn-gap: var(--spacing-4px);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-base);
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  outline: none;
+}
+
+/* ─── State overlay (hover / press) ─────────── */
+
+.root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.root:not(:disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.root:not(:disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+.tone--Inverse:not(:disabled):hover::before {
+  background-color: var(--color-fill-inverse-hover);
+}
+
+.tone--Inverse:not(:disabled):active::before {
+  background-color: var(--color-fill-inverse-press);
+}
+
+/* ─── Focus ring ─────────────────────────────── */
+
+.root::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: calc(var(--btn-radius) + 4px);
+  pointer-events: none;
+}
+
+.root:focus-visible::after {
+  display: block;
+}
+
+/* ─── Content ────────────────────────────────── */
+
+.content {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--btn-gap);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.label {
+  padding: 0 var(--spacing-4px);
+}
+
+/* ─── Sizes ──────────────────────────────────── */
+
+.size--Large {
+  --btn-radius: var(--radius-xl);
+  --btn-gap: var(--spacing-6px);
+
+  height: 64px;
+  padding: 0 var(--spacing-24px);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
+}
+
+.size--Medium {
+  height: 48px;
+  padding: 0 var(--spacing-16px);
+}
+
+.size--Small {
+  --btn-gap: var(--spacing-2px);
+
+  height: 32px;
+  padding: 0 var(--spacing-12px);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+/* ─── Elevation (Primary enabled) ───────────── */
+
+.variant--Primary:not(:disabled) {
+  box-shadow: var(--elevation-raised);
+}
+
+/* ─── Variant: Primary ───────────────────────── */
+
+.variant--Primary.tone--Brand {
+  background-color: var(--color-fill-brand-high);
+  color: var(--color-text-inverse-high);
+}
+
+.variant--Primary.tone--Neutral {
+  background-color: var(--color-fill-high);
+  color: var(--color-text-inverse-high);
+}
+
+.variant--Primary.tone--Critical {
+  background-color: var(--color-fill-critical-high);
+  color: var(--color-text-inverse-high);
+}
+
+.variant--Primary.tone--Inverse {
+  background-color: var(--color-fill-inverse-high);
+  color: var(--color-text-high);
+}
+
+/* ─── Variant: Secondary ─────────────────────── */
+/* Stroke via inset box-shadow (inside) — não expande o outer boundary,
+   mantendo o focus ring concêntrico com o mesmo inset do Primary. */
+
+.variant--Secondary {
+  background-color: transparent;
+}
+
+.variant--Secondary.tone--Brand:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 var(--border-1px) var(--color-stroke-brand-high),
+    var(--elevation-raised);
+  color: var(--color-text-brand);
+}
+
+.variant--Secondary.tone--Neutral:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 var(--border-1px) var(--color-stroke-high),
+    var(--elevation-raised);
+  color: var(--color-text-high);
+}
+
+.variant--Secondary.tone--Critical:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 var(--border-1px) var(--color-stroke-critical-high),
+    var(--elevation-raised);
+  color: var(--color-text-critical);
+}
+
+.variant--Secondary.tone--Inverse:not(:disabled) {
+  box-shadow:
+    inset 0 0 0 var(--border-1px) var(--color-stroke-inverse-high),
+    var(--elevation-raised);
+  color: var(--color-text-inverse-high);
+}
+
+/* ─── Variant: Tertiary ──────────────────────── */
+
+.variant--Tertiary {
+  background-color: transparent;
+}
+
+.variant--Tertiary.tone--Brand {
+  color: var(--color-text-brand);
+}
+
+.variant--Tertiary.tone--Neutral {
+  color: var(--color-text-high);
+}
+
+.variant--Tertiary.tone--Critical {
+  color: var(--color-text-critical);
+}
+
+.variant--Tertiary.tone--Inverse {
+  color: var(--color-text-inverse-high);
+}
+
+/* ─── Disabled ───────────────────────────────── */
+
+.root:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+
+.variant--Primary:disabled:not(.tone--Inverse) {
+  background-color: var(--color-fill-disabled);
+  color: var(--color-text-inverse-high);
+}
+
+.variant--Primary.tone--Inverse:disabled {
+  background-color: var(--color-fill-inverse-disabled);
+  color: var(--color-text-inverse-high);
+}
+
+.variant--Secondary:disabled:not(.tone--Inverse) {
+  box-shadow: inset 0 0 0 var(--border-1px) var(--color-stroke-disabled);
+  color: var(--color-text-disabled);
+}
+
+.variant--Secondary.tone--Inverse:disabled {
+  box-shadow: inset 0 0 0 var(--border-1px) var(--color-stroke-inverse-disabled);
+  color: var(--color-text-inverse-disabled);
+}
+
+.variant--Tertiary:disabled:not(.tone--Inverse) {
+  color: var(--color-text-disabled);
+}
+
+.variant--Tertiary.tone--Inverse:disabled {
+  color: var(--color-text-inverse-disabled);
+}
+
+/* ─── Icon colors ────────────────────────────── */
+
+.variant--Primary.tone--Brand .icon,
+.variant--Primary.tone--Neutral .icon,
+.variant--Primary.tone--Critical .icon { color: var(--color-icon-inverse-high); }
+.variant--Primary.tone--Inverse .icon  { color: var(--color-icon-neutral); }
+
+.variant--Secondary.tone--Brand:not(:disabled) .icon    { color: var(--color-icon-brand); }
+.variant--Secondary.tone--Neutral:not(:disabled) .icon  { color: var(--color-icon-neutral); }
+.variant--Secondary.tone--Critical:not(:disabled) .icon { color: var(--color-icon-critical); }
+.variant--Secondary.tone--Inverse:not(:disabled) .icon  { color: var(--color-icon-inverse-high); }
+
+.variant--Tertiary.tone--Brand .icon    { color: var(--color-icon-brand); }
+.variant--Tertiary.tone--Neutral .icon  { color: var(--color-icon-neutral); }
+.variant--Tertiary.tone--Critical .icon { color: var(--color-icon-critical); }
+.variant--Tertiary.tone--Inverse .icon  { color: var(--color-icon-inverse-high); }
+
+.variant--Primary:disabled .icon                        { color: var(--color-icon-inverse-high); }
+.variant--Secondary:disabled:not(.tone--Inverse) .icon  { color: var(--color-icon-disabled); }
+.variant--Secondary.tone--Inverse:disabled .icon        { color: var(--color-icon-inverse-disabled); }
+.variant--Tertiary:disabled:not(.tone--Inverse) .icon   { color: var(--color-icon-disabled); }
+.variant--Tertiary.tone--Inverse:disabled .icon         { color: var(--color-icon-inverse-disabled); }

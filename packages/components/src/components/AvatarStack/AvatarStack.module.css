@@ -1,0 +1,64 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ─── Slot (anel branco + margem negativa para overlap) ─── */
+
+.slot {
+  /* border branca = anel de separação visível quando os slots se sobrepõem */
+  border: var(--border-2px) solid var(--color-background-base);
+  background-color: var(--color-background-base);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  position: relative; /* participa do stacking order por DOM */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Margem negativa apenas nos slots que têm próximo irmão */
+.slot--Small:not(:last-child)  { margin-right: -9px; }
+.slot--Medium:not(:last-child) { margin-right: -12px; }
+.slot--Large:not(:last-child)  { margin-right: -16px; }
+
+/* ─── Chip de overflow ─────────────────────────────────── */
+
+.overflow {
+  border-radius: var(--radius-full);
+  background-color: var(--color-fill-low);
+  border: var(--border-1px) solid var(--color-stroke-low);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative; /* garante que seja positioned, participando do stacking */
+}
+
+.overflow--Small  { width: 32px; height: 32px; }
+.overflow--Medium { width: 48px; height: 48px; }
+.overflow--Large  { width: 64px; height: 64px; }
+
+.overflowText {
+  color: var(--color-text-high);
+  font-weight: var(--font-weight-strong);
+  white-space: nowrap;
+}
+
+.overflowText--Small {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-tiny);
+  line-height: var(--line-height-tiny);
+}
+
+.overflowText--Medium {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.overflowText--Large {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+}

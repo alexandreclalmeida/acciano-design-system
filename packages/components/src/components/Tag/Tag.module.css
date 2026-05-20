@@ -1,0 +1,140 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-stroke-low);
+  background-color: var(--color-fill-low);
+  padding: 0 var(--spacing-8px);
+  gap: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* _State basic overlay for hover/active */
+  position: relative;
+}
+
+.tag::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-full);
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.tag:hover:not(:disabled)::before {
+  background-color: var(--color-fill-hover);
+}
+
+.tag:active:not(:disabled)::before {
+  background-color: var(--color-fill-press);
+}
+
+.tag:disabled {
+  background-color: var(--color-fill-disabled);
+  border-color: var(--color-stroke-disabled);
+  cursor: not-allowed;
+}
+
+/* ─── Sizes ──────────────────────────────── */
+
+.size--Medium {
+  height: 32px;
+}
+
+.size--Small {
+  height: 24px;
+}
+
+/* ─── Selected ───────────────────────────── */
+
+.state--selected {
+  background-color: var(--color-fill-selected-high);
+  border-color: transparent;
+}
+
+.state--selected::before {
+  inset: 0;
+}
+
+/* disabled + selected: fill-disabled, no border, inverse-low text */
+.tag:disabled.state--selected {
+  background-color: var(--color-fill-disabled);
+  border-color: transparent;
+}
+
+/* ─── Label ──────────────────────────────── */
+
+.label {
+  padding: 0 var(--spacing-4px);
+  font-family: var(--font-paragraph, 'Inter', sans-serif);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-high);
+  white-space: nowrap;
+}
+
+.size--Medium .label {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.size--Small .label {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.state--selected .label {
+  color: var(--color-text-inverse-high);
+}
+
+/* disabled unselected → text/disabled */
+.tag:disabled:not(.state--selected) .label {
+  color: var(--color-text-disabled);
+}
+
+/* disabled selected → text/inverse/low (faded white) */
+.tag:disabled.state--selected .label {
+  color: var(--color-text-inverse-low);
+}
+
+/* ─── Icons ──────────────────────────────── */
+
+.checkIcon {
+  color: var(--color-text-inverse-high);
+  flex-shrink: 0;
+}
+
+.tag:disabled .checkIcon {
+  color: var(--color-text-inverse-low);
+}
+
+.dismissIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-high);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+}
+
+.dismissIcon:focus-visible {
+  outline: 2px solid var(--color-stroke-focus);
+  outline-offset: 1px;
+}
+
+.state--selected .dismissIcon {
+  color: var(--color-text-inverse-high);
+}
+
+.tag:disabled:not(.state--selected) .dismissIcon {
+  color: var(--color-text-disabled);
+  pointer-events: none;
+}
+
+.tag:disabled.state--selected .dismissIcon {
+  color: var(--color-text-inverse-low);
+  pointer-events: none;
+}

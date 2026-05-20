@@ -1,0 +1,58 @@
+.dot {
+  display: inline-flex;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  /* Bkgd — white layer always present behind the SVG */
+  background-color: var(--color-background-base);
+}
+
+/* ─── Sizes ──────────────────────────────── */
+
+.size--Large {
+  width: 16px;
+  height: 16px;
+}
+.size--Medium {
+  width: 12px;
+  height: 12px;
+}
+.size--Small {
+  width: 8px;
+  height: 8px;
+}
+
+/* ─── Type colors (Small and Notification — no SVG icon) ─── */
+
+.type--Info {
+  background-color: var(--color-fill-info-high);
+}
+.type--Success {
+  background-color: var(--color-fill-success-high);
+}
+.type--Online {
+  background-color: var(--color-fill-success-high);
+}
+.type--Warning {
+  background-color: var(--color-fill-yellow);
+}
+.type--Away {
+  background-color: var(--color-fill-yellow);
+}
+.type--Critical {
+  background-color: var(--color-fill-critical-high);
+}
+.type--Busy {
+  background-color: var(--color-fill-critical-high);
+}
+.type--Offline {
+  background-color: var(--color-fill-disabled);
+}
+.type--Notification {
+  background-color: var(--color-fill-critical-high);
+}
+
+/* ─── Outline ────────────────────────────── */
+
+.outline {
+  box-shadow: 0 0 0 2px var(--color-background-base);
+}

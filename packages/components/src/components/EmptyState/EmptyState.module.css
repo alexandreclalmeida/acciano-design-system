@@ -1,0 +1,39 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-24px);
+}
+
+/* ─── Text group ──────────────────────────── */
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-8px);
+  width: 100%;
+}
+
+/* ─── Heading ─────────────────────────────── */
+
+.heading {
+  font-family: var(--font-heading, 'Inter', sans-serif);
+  font-weight: var(--font-weight-strong);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  color: var(--color-text-high);
+  margin: 0;
+}
+
+/* ─── Description ─────────────────────────── */
+
+.description {
+  font-family: var(--font-paragraph, 'Inter', sans-serif);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-low);
+  margin: 0;
+  width: 100%;
+}

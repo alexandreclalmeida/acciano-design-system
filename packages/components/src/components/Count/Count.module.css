@@ -1,0 +1,31 @@
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 var(--spacing-4px);
+  border-radius: var(--radius-full);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-small);
+}
+
+/* ─── Emphasis ───────────────────────────── */
+
+.emphasis--Strong {
+  background-color: var(--color-fill-critical-high);
+  color: var(--color-text-inverse-high);
+}
+
+.emphasis--Moderate {
+  background-color: var(--color-fill-critical-low);
+  color: var(--color-text-critical);
+}
+
+.emphasis--Weak {
+  background-color: var(--color-fill-low);
+  color: var(--color-text-low);
+}

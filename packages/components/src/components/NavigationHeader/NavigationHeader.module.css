@@ -1,0 +1,196 @@
+/* ===================================================
+   NavigationHeader
+   =================================================== */
+
+/* ─── Desktop root ───────────────────────────────── */
+
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  padding: 0 var(--spacing-32px);
+  gap: var(--spacing-48px);
+  background-color: var(--color-background-base);
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* ─── Desktop Left ───────────────────────────────── */
+
+.left {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  min-width: 0;
+  gap: var(--spacing-48px);
+}
+
+.menuLeft {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ─── Desktop Right ──────────────────────────────── */
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16px);
+  flex-shrink: 0;
+}
+
+/* icon buttons agrupados sem gap interno (Figma: 0px entre eles) */
+.menuRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ─── Mobile Closed bar ──────────────────────────── */
+
+.mobileBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  padding-left: var(--spacing-16px);
+  padding-right: var(--spacing-24px);
+  background-color: var(--color-background-base);
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.mobileBarLeft {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  min-width: 0;
+  gap: var(--spacing-12px);
+}
+
+.mobileBarRight {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+/* ─── Hamburger / Close icon button ─────────────── */
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  position: relative;
+  outline: none;
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.iconBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.iconBtn:hover::before {
+  background: var(--color-fill-hover);
+}
+
+.iconBtn:active::before {
+  background: var(--color-fill-press);
+}
+
+.iconBtn:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.iconBtnIcon {
+  position: relative;
+}
+
+/* ─── Mobile Open overlay ────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-fill-overlay);
+}
+
+/* ─── Mobile Open panel ──────────────────────────── */
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100%;
+  background-color: var(--color-background-base);
+  border-right: var(--border-1px) solid var(--color-stroke-low);
+  overflow: hidden;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* ─── Panel top section ──────────────────────────── */
+
+.panelTop {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-8px) 0;
+  flex-shrink: 0;
+}
+
+.panelCloseRow {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding: 0 var(--spacing-12px);
+  flex-shrink: 0;
+}
+
+/* ─── Panel middle section ───────────────────────── */
+
+.panelMiddle {
+  flex: 1 0 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ─── Panel bottom section ───────────────────────── */
+
+.panelBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  width: 100%;
+  padding-bottom: var(--spacing-24px);
+}

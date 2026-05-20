@@ -1,0 +1,187 @@
+/* ─── Base ──────────────────────────────────── */
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Layout por tipo ────────────────────── */
+
+.item--interactive {
+  padding: var(--spacing-12px) var(--spacing-16px);
+  cursor: pointer;
+}
+
+.item--heading {
+  padding: var(--spacing-16px) var(--spacing-16px) var(--spacing-4px);
+  align-items: flex-end;
+  cursor: default;
+}
+
+.item--divider {
+  padding: var(--spacing-8px) 0;
+  cursor: default;
+}
+
+/* ─── State overlay ─────────────────────── */
+
+.item--interactive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.item--interactive:not(.item--disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.item--interactive:not(.item--disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+.item--disabled {
+  cursor: default;
+}
+
+/* ─── Content row ───────────────────────── */
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--spacing-12px);
+  min-width: 0;
+}
+
+/* ─── Text group (Dual) ─────────────────── */
+
+.textGroup {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ─── Labels ─────────────────────────────── */
+
+.label {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.label--critical {
+  color: var(--color-text-critical);
+}
+
+.item--disabled .label {
+  color: var(--color-text-disabled);
+}
+
+.description {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item--disabled .description {
+  color: var(--color-text-disabled);
+}
+
+.labelHeading {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+/* ─── Ícones ─────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.icon--critical {
+  color: var(--color-icon-critical);
+}
+
+.item--disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Badge ─────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 var(--spacing-8px);
+  border-radius: var(--radius-full);
+  border: var(--border-1px) solid var(--color-stroke-low);
+  background-color: var(--color-fill-low);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-high);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge--critical {
+  border-color: var(--color-stroke-critical-low);
+  background-color: var(--color-fill-critical-low);
+  color: var(--color-text-critical);
+}
+
+/* ─── Count ─────────────────────────────── */
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 var(--spacing-4px);
+  border-radius: var(--radius-full);
+  border: var(--border-1px) solid var(--color-stroke-low);
+  background-color: var(--color-fill-low);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.count--critical {
+  border: none;
+  background-color: var(--color-fill-critical-high);
+  color: var(--color-text-inverse-high);
+}

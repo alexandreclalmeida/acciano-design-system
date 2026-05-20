@@ -1,0 +1,158 @@
+/* ─── Desktop layout ───────────────────────────── */
+
+.desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+}
+
+/* Previous / Next wrappers — padding creates visual separation from page numbers */
+.prevNav {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding-right: var(--spacing-16px);
+}
+
+.nextNav {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding-left: var(--spacing-16px);
+}
+
+/* Previous / Next link buttons — underline appears on hover (same pattern as Breadcrumbs) */
+.navLink:hover,
+.navLink:active {
+  text-decoration: underline;
+}
+
+/* Summary text (right side) */
+.summary {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Page button (_Page single) ───────────────── */
+
+.pageBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* border-box: border doesn't inflate the 40px total size */
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  /* 1px transparent border reserves space — avoids layout shift on selection */
+  border: var(--border-1px) solid transparent;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Hover / press overlay */
+.pageBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.pageBtn:not(:disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.pageBtn:not(:disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* Focus ring */
+.pageBtn:focus-visible {
+  outline: var(--border-2px) solid var(--color-stroke-focus);
+  outline-offset: 2px;
+}
+
+/* ─── Page button: selected ────────────────────── */
+
+.pageBtn--selected {
+  border-color: var(--color-stroke-high);
+}
+
+/* ─── Page button: disabled ────────────────────── */
+
+.pageBtn:disabled {
+  cursor: default;
+}
+
+.pageBtn--selected:disabled {
+  border-color: var(--color-stroke-disabled);
+}
+
+/* ─── Page button text ─────────────────────────── */
+
+.pageBtnText {
+  position: relative;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+.pageBtn:disabled .pageBtnText {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Ellipsis ─────────────────────────────────── */
+
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  user-select: none;
+}
+
+/* ─── Mobile layout ────────────────────────────── */
+
+.mobile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16px);
+}
+
+.mobileSummary {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  text-align: center;
+  white-space: nowrap;
+}

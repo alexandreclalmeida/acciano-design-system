@@ -1,0 +1,195 @@
+/* ─── Root ───────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24px);
+  width: 100%;
+}
+
+/* ─── Table wrapper ──────────────────────────────── */
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ─── Table ──────────────────────────────────────── */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: auto;
+}
+
+/* ─── Colgroup ───────────────────────────────────── */
+
+.colCheckbox {
+  width: 72px;
+  min-width: 72px;
+}
+
+/* ─── Heading cell (<th>) ────────────────────────── */
+
+.headingCell {
+  padding: 0;
+  border-top: var(--border-1px) solid var(--color-stroke-low);
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+  font-weight: normal;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.headingCell--checkbox {
+  width: 72px;
+}
+
+/* Inner for non-sortable headings */
+.headingCellInner {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 var(--spacing-24px);
+  text-align: left;
+}
+
+.headingCellInner--right {
+  justify-content: flex-end;
+}
+
+.headingCellInner--right .headingText {
+  text-align: right;
+}
+
+/* Inner for checkbox heading */
+.checkboxCellInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--spacing-24px);
+}
+
+/* Sortable heading: full-cell button */
+.sortButton {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--spacing-24px);
+  gap: var(--spacing-8px);
+  text-align: left;
+  outline: none;
+  position: relative;
+}
+
+.sortButton--right {
+  justify-content: flex-end;
+}
+
+/* Hover/press on sortable heading */
+.headingCell:has(.sortButton:hover) {
+  background-color: var(--color-fill-hover);
+}
+
+.headingCell:has(.sortButton:active) {
+  background-color: var(--color-fill-press);
+}
+
+/* Focus ring */
+.sortButton::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: 0;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  pointer-events: none;
+}
+
+.sortButton:focus-visible::after {
+  display: block;
+}
+
+/* ─── Heading text ───────────────────────────────── */
+
+.headingText {
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  word-break: break-word;
+}
+
+.sortButton--right .headingText {
+  flex: none;
+}
+
+/* ─── Sort icon ──────────────────────────────────── */
+
+.sortIcon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.sortIcon--active {
+  color: var(--color-icon-high);
+}
+
+/* ─── Data cell (<td>) ───────────────────────────── */
+
+.dataCell {
+  padding: 0;
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+  vertical-align: middle;
+}
+
+.dataCell--alternate {
+  background-color: var(--color-fill-lower);
+}
+
+.dataCell--checkbox {
+  width: 72px;
+}
+
+/* Inner flex container */
+.dataCellInner {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding: 0 var(--spacing-24px);
+  box-sizing: border-box;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-low);
+}
+
+.dataCellInner--right {
+  justify-content: flex-end;
+}
+
+.dataCellInner--gap-sm {
+  gap: var(--spacing-8px);
+}
+
+.dataCellInner--gap-md {
+  gap: var(--spacing-16px);
+}
+
+.trendUp {
+  color: var(--color-icon-success);
+}
+
+.trendDown {
+  color: var(--color-icon-critical);
+}

@@ -1,0 +1,59 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-8px);
+}
+
+.layout--Vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-4px);
+}
+
+/* ─── Icons + number row ─────────────────── */
+
+.iconsAndNumber {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-8px);
+}
+
+/* ─── Icons row ──────────────────────────── */
+
+.icons {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-4px);
+}
+
+/* ─── Numeric value ──────────────────────── */
+
+.number {
+  font-family: var(--font-paragraph, 'Inter', sans-serif);
+  font-weight: var(--font-weight-strong);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  white-space: nowrap;
+}
+
+/* ─── Reviews (vertical layout) ──────────── */
+
+.reviewsVertical {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-4px);
+}
+
+.reviewsFrom {
+  font-family: var(--font-paragraph, 'Inter', sans-serif);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}

@@ -1,0 +1,237 @@
+/* ─── Root ───────────────────────────────────── */
+/* Custom properties cascade to all children, centralizando
+   os valores dependentes de size num único ponto. */
+
+.root {
+  --_label-size: var(--font-size-base);
+  --_label-lh: var(--line-height-base);
+  --_label-optional-size: var(--font-size-small);
+  --_label-optional-lh: var(--line-height-small);
+  --_field-height: 48px;
+  --_content-px: var(--spacing-16px);
+  --_text-size: var(--font-size-base);
+  --_text-lh: var(--line-height-base);
+  --_helper-size: var(--font-size-small);
+  --_helper-lh: var(--line-height-small);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4px);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ─── Size ───────────────────────────────────── */
+
+.size--Small {
+  --_label-size: var(--font-size-small);
+  --_label-lh: var(--line-height-small);
+  --_label-optional-size: var(--font-size-tiny);
+  --_label-optional-lh: var(--line-height-tiny);
+  --_field-height: 32px;
+  --_content-px: var(--spacing-12px);
+  --_text-size: var(--font-size-small);
+  --_text-lh: var(--line-height-small);
+  --_helper-size: var(--font-size-tiny);
+  --_helper-lh: var(--line-height-tiny);
+}
+
+/* ─── Label ───────────────────────────────────── */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: 0 var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--_label-size);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--_label-lh);
+  color: var(--color-text-high);
+  cursor: default;
+}
+
+.root--disabled .label {
+  color: var(--color-text-disabled);
+}
+
+.labelText {
+  white-space: nowrap;
+}
+
+.labelRequired {
+  color: var(--color-text-warning);
+}
+
+.labelOptional {
+  font-size: var(--_label-optional-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--_label-optional-lh);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Field wrap ──────────────────────────────── */
+/* Wrapper isolado do field para hospedar o focus ring fora do
+   overflow:hidden que clipa o overlay de estado. */
+
+.fieldWrap {
+  position: relative;
+  width: 100%;
+}
+
+.fieldWrap::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -5px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.fieldWrap:has(.field--critical)::after {
+  inset: -6px;
+}
+
+.fieldWrap:has(input:focus-visible)::after {
+  display: block;
+}
+
+/* ─── Field ───────────────────────────────────── */
+
+.field {
+  --_state-inset: -1px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--_field-height);
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-fill-inverse-high);
+  border: var(--border-1px) solid var(--color-stroke-high);
+  border-radius: var(--radius-lg);
+  cursor: text;
+}
+
+/* Overlay de estado (hover / press) */
+.field::before {
+  content: '';
+  position: absolute;
+  inset: var(--_state-inset);
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.field:not(.field--disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.field:not(.field--disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* ─── Type: Critical ─────────────────────────── */
+/* --_state-inset: -2px porque a borda aqui é 2px. */
+
+.field--critical {
+  --_state-inset: -2px;
+
+  background-color: var(--color-fill-critical-low);
+  border-width: var(--border-2px);
+  border-color: var(--color-stroke-critical-high);
+}
+
+/* ─── Type: Disabled ─────────────────────────── */
+
+.field--disabled {
+  border-color: var(--color-stroke-disabled);
+  cursor: default;
+}
+
+/* ─── Content ─────────────────────────────────── */
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--spacing-8px);
+  height: 100%;
+  min-width: 0;
+  padding: 0 var(--_content-px);
+  border-radius: inherit;
+}
+
+/* ─── Input ──────────────────────────────────── */
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--_text-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--_text-lh);
+  color: var(--color-text-high);
+  caret-color: var(--color-stroke-focus);
+}
+
+.input::placeholder {
+  color: var(--color-text-low);
+}
+
+.input:disabled {
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+
+.input:disabled::placeholder {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Icons ──────────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.field--disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Helper ─────────────────────────────────── */
+
+.helper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--_helper-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--_helper-lh);
+  color: var(--color-text-low);
+}
+
+.helper--critical {
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-text-critical);
+}
+
+.helper--disabled {
+  color: var(--color-text-disabled);
+}
+
+.helperIcon {
+  flex-shrink: 0;
+}

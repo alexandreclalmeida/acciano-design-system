@@ -1,0 +1,15 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-10px);
+}
+
+.symbol {
+  color: var(--color-text-brand);
+  flex-shrink: 0;
+}
+
+.wordmark {
+  color: var(--color-text-high);
+  flex-shrink: 0;
+}

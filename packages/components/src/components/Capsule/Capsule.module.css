@@ -1,0 +1,67 @@
+.capsule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* ─── Tones ──────────────────────────────── */
+
+.tone--Brand {
+  color: var(--color-icon-brand);
+  border-color: var(--color-stroke-brand-low);
+  background-color: var(--color-fill-brand-low);
+}
+
+.tone--Neutral {
+  color: var(--color-icon-neutral);
+  border-color: var(--color-stroke-low);
+  background-color: var(--color-fill-low);
+}
+
+.tone--Info {
+  color: var(--color-icon-info);
+  border-color: var(--color-stroke-info-low);
+  background-color: var(--color-fill-info-low);
+}
+
+.tone--Success {
+  color: var(--color-icon-success);
+  border-color: var(--color-stroke-success-low);
+  background-color: var(--color-fill-success-low);
+}
+
+.tone--Warning {
+  color: var(--color-icon-warning);
+  border-color: var(--color-stroke-warning-low);
+  background-color: var(--color-fill-warning-low);
+}
+
+.tone--Critical {
+  color: var(--color-icon-critical);
+  border-color: var(--color-stroke-critical-low);
+  background-color: var(--color-fill-critical-low);
+}
+
+.tone--Alter {
+  color: var(--color-icon-alter);
+  border-color: var(--color-stroke-alter-low);
+  background-color: var(--color-fill-alter-low);
+}
+
+.tone--Inverse {
+  color: var(--color-icon-inverse-low);
+  border-color: var(--color-stroke-inverse-low);
+  background-color: var(--color-fill-inverse-low);
+}
+
+/* ─── Variant ────────────────────────────── */
+
+.variant--Stroked {
+  background-color: transparent;
+  border: var(--border-1px) solid;
+}

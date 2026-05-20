@@ -1,0 +1,125 @@
+.text {
+  color: var(--color-text-high);
+  margin: 0;
+}
+
+/* ─── Display ─────────────────────────────── */
+
+.variant--Hero {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-stronger);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-tighter);
+}
+
+/* ─── Headings ────────────────────────────── */
+
+.variant--H1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-h1);
+  letter-spacing: var(--letter-spacing-tighter);
+}
+
+.variant--H2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.variant--H3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-h3);
+}
+
+.variant--H4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-h4);
+}
+
+.variant--H5 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-h5);
+}
+
+/* ─── Titles ──────────────────────────────── */
+
+.variant--Lead {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-lead);
+}
+
+.variant--Large {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-large);
+}
+
+/* ─── Body ────────────────────────────────── */
+
+.variant--Base {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+}
+
+.variant--Small {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+}
+
+.variant--Tiny {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tiny);
+}
+
+.variant--Nano {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-nano);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-tiny);
+}
+
+/* ─── Special ─────────────────────────────── */
+
+.variant--Link {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  text-decoration: underline;
+}
+
+.variant--Uppercase {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+}
+
+.variant--Code {
+  font-family: var(--font-code);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+}

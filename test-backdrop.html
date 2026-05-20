@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>backdrop-filter test</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f0f4ff;
+    }
+
+    /* ── Page content to make blur visible ── */
+    .page {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    h1 { font-size: 32px; color: #1e3a8a; margin: 0; }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 480px;
+    }
+
+    .card h2 { margin: 0 0 8px; font-size: 18px; color: #111; }
+    .card p  { margin: 0; font-size: 14px; color: #555; line-height: 1.6; }
+
+    .trigger {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      background: #1d4ed8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ── Overlay ── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background-color: rgba(7, 20, 77, 0.45);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .overlay-modal {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .overlay.open { display: flex; }
+
+    /* ── Drawer panel ── */
+    .panel {
+      height: 100%;
+      width: 400px;
+      background: white;
+      border-left: 1px solid rgba(9, 27, 102, 0.12);
+      box-shadow: 0px 20px 24px -4px rgba(0,0,0,0.08), 0px 8px 8px -4px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      padding: 24px 32px;
+      border-bottom: 1px solid rgba(9, 27, 102, 0.12);
+      font-size: 24px;
+      font-weight: 600;
+      color: rgba(2, 6, 23, 0.9);
+    }
+
+    .panel-content {
+      flex: 1;
+      padding: 48px 32px;
+      overflow-y: auto;
+    }
+
+    .close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <h1>backdrop-filter test</h1>
+
+    <div class="card">
+      <h2>Card 1 — Lorem ipsum</h2>
+      <p>Dolor sit amet consectetur adipiscing elit. Quisque vehicula libero vel sapien pellentesque, at facilisis arcu facilisis.</p>
+    </div>
+
+    <div class="card">
+      <h2>Card 2 — Conteúdo rico</h2>
+      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Proin vel magna at nunc.</p>
+    </div>
+
+    <div class="card">
+      <h2>Card 3 — Mais texto</h2>
+      <p>Curabitur gravida nisl at arcu convallis, ut condimentum eros facilisis. Maecenas facilisis eros quis mi fermentum.</p>
+    </div>
+
+    <div style="display:flex; gap: 16px;">
+      <button class="trigger" onclick="document.querySelector('.overlay-drawer').classList.add('open')">
+        Open drawer
+      </button>
+      <button class="trigger" style="background:#1e40af;" onclick="document.querySelector('.overlay-modal').classList.add('open')">
+        Open modal
+      </button>
+    </div>
+  </div>
+
+  <div class="overlay overlay-drawer" onclick="this.classList.remove('open')">
+    <div class="panel" onclick="event.stopPropagation()">
+      <div class="panel-header">Heading</div>
+      <div class="panel-content">
+        <p>Conteúdo do drawer.</p>
+      </div>
+      <button class="close" onclick="document.querySelector('.overlay-drawer').classList.remove('open')">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal overlay -->
+  <div class="overlay overlay-modal" style="justify-content: center; align-items: center;" onclick="this.classList.remove('open')">
+    <div onclick="event.stopPropagation()" style="
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      width: 500px;
+      max-width: calc(100vw - 48px);
+      box-shadow: 0px 20px 24px -4px rgba(0,0,0,0.08), 0px 8px 8px -4px rgba(0,0,0,0.04);
+      position: relative;
+    ">
+      <h2 style="margin: 0 0 16px; font-size: 20px; color: #111;">Modal heading</h2>
+      <p style="margin: 0 0 24px; font-size: 14px; color: #555; line-height: 1.6;">
+        Conteúdo do modal. O backdrop usa blur(8px) — mais forte que o Drawer (4px).
+      </p>
+      <button class="trigger" onclick="document.querySelector('.overlay-modal').classList.remove('open')">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

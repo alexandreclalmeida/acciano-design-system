@@ -1,0 +1,26 @@
+/* ─── Root ──────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24px);
+}
+
+.align--Left   { align-items: flex-start; }
+.align--Center { align-items: center; }
+
+/* ─── Quote text ────────────────────────────────── */
+
+.quote {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-low);
+}
+
+.align--Center .quote {
+  text-align: center;
+}

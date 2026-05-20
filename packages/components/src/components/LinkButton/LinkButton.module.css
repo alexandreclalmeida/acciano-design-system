@@ -1,0 +1,88 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+  width: fit-content;
+  font-family: var(--font-paragraph);
+  font-style: normal;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ─── Focus ring ──────────────────────────── */
+
+.root::after {
+  content: '';
+  display: none;
+  position: absolute;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.root:focus-visible::after {
+  display: block;
+}
+
+/* ─── Tones ───────────────────────────────── */
+
+.tone--link     { color: var(--color-text-link); }
+.tone--neutral  { color: var(--color-text-high); }
+.tone--critical { color: var(--color-text-critical); }
+.tone--inverse  { color: var(--color-text-inverse-high); }
+
+/* ─── Sizes ───────────────────────────────── */
+
+.size--base {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.size--small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+/* ─── Weights ─────────────────────────────── */
+
+.weight--regular { font-weight: var(--font-weight-normal); }
+.weight--bold    { font-weight: var(--font-weight-strong); }
+
+/* ─── Underline ───────────────────────────── */
+
+.underline {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+.underline:hover,
+.underline:active {
+  text-decoration: none;
+}
+
+/* ─── Disabled ────────────────────────────── */
+
+.disabled {
+  color: var(--color-text-disabled);
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ─── Icon ────────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+}
+
+.tone--link .icon     { color: var(--color-icon-link); }
+.tone--neutral .icon  { color: var(--color-icon-neutral); }
+.tone--critical .icon { color: var(--color-icon-critical); }
+.tone--inverse .icon  { color: var(--color-icon-inverse-high); }
+
+/* Disabled overrides tone; inverse uses its own disabled token */
+.disabled .icon               { color: var(--color-icon-disabled); }
+.tone--inverse.disabled .icon { color: var(--color-icon-inverse-disabled); }

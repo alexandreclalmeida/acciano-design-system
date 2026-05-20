@@ -1,0 +1,27 @@
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--spacing-16px);
+}
+
+/* ─── Layout ─────────────────────────────────── */
+
+.layout--Horizontal {
+  flex-direction: row;
+}
+
+.layout--Vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ─── Order (Reverse inverts the visual order) ── */
+
+.layout--Horizontal.order--Reverse {
+  flex-direction: row-reverse;
+}
+
+.layout--Vertical.order--Reverse {
+  flex-direction: column-reverse;
+}

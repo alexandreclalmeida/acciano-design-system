@@ -1,0 +1,31 @@
+{
+  "name": "@acciano/icons",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Ícones customizados e de marcas do Acciano como componentes React",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run build:icons && vite build && tsc --emitDeclarationOnly",
+    "build:icons": "tsx scripts/build-icons.ts",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vite": "^8.0.0"
+  }
+}

@@ -1,0 +1,119 @@
+/* ─── Item row ────────────────────────────────── */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16px);
+  padding: var(--spacing-16px) var(--spacing-12px) var(--spacing-16px) 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+}
+
+/* ─── File icon capsule ───────────────────────── */
+
+.capsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12px);
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-fill-low);
+}
+
+.fileIcon {
+  color: var(--color-icon-neutral);
+}
+
+/* ─── Text ────────────────────────────────────── */
+
+.text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-high);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.name--uploaded {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.name--link {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-position: from-font;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tiny);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Progress bar area ───────────────────────── */
+
+.progressWrap {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  padding-right: var(--spacing-12px);
+}
+
+/* ─── Remove button ───────────────────────────── */
+
+.removeBtn {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.1s;
+}
+
+.removeBtn:hover {
+  opacity: 0.7;
+}
+
+.removeBtn:focus-visible {
+  outline: var(--border-2px) solid var(--color-stroke-focus);
+  outline-offset: 2px;
+}
+
+.removeIcon {
+  color: var(--color-icon-neutral);
+  flex-shrink: 0;
+}

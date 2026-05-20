@@ -1,0 +1,200 @@
+/* ─── Root ───────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4px);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ─── Label ───────────────────────────────────── */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: 0 var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  cursor: default;
+}
+
+.root--disabled .label {
+  color: var(--color-text-disabled);
+}
+
+.labelText {
+  white-space: nowrap;
+}
+
+.labelRequired {
+  color: var(--color-text-warning);
+}
+
+.labelOptional {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Area wrap ───────────────────────────────── */
+/* Wrapper isolado do area para hospedar o focus ring fora do
+   overflow:hidden que clipa o overlay de estado. */
+
+.areaWrap {
+  position: relative;
+  width: 100%;
+}
+
+.areaWrap::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -5px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.areaWrap:has(.area--critical)::after {
+  inset: -6px;
+}
+
+.areaWrap:has(textarea:focus-visible)::after {
+  display: block;
+}
+
+/* ─── Area ───────────────────────────────────── */
+
+.area {
+  --_state-inset: -1px;
+
+  position: relative;
+  width: 100%;
+  min-height: 64px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-fill-inverse-high);
+  border: var(--border-1px) solid var(--color-stroke-high);
+  border-radius: var(--radius-lg);
+  cursor: text;
+}
+
+/* Overlay de estado (hover / press) */
+.area::before {
+  content: '';
+  position: absolute;
+  inset: var(--_state-inset);
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.area:not(.area--disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.area:not(.area--disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* ─── Type: Critical ─────────────────────────── */
+
+.area--critical {
+  --_state-inset: -2px;
+
+  background-color: var(--color-fill-critical-low);
+  border-width: var(--border-2px);
+  border-color: var(--color-stroke-critical-high);
+}
+
+/* ─── Type: Disabled ─────────────────────────── */
+
+.area--disabled {
+  border-color: var(--color-stroke-disabled);
+  cursor: default;
+}
+
+/* ─── Textarea ───────────────────────────────── */
+/* Padding assimétrico do Figma: pt=8px, px=12px, pb=16px.
+   O grabber fica no canto inferior direito — o padding-bottom
+   maior dá espaço visual para ele. */
+
+.textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--spacing-8px) var(--spacing-12px) var(--spacing-16px);
+  border: none;
+  outline: none;
+  background: transparent;
+  margin: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  caret-color: var(--color-stroke-focus);
+  resize: none;
+}
+
+.textarea::placeholder {
+  color: var(--color-text-low);
+}
+
+.textarea:disabled {
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+
+.textarea:disabled::placeholder {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Grabber ─────────────────────────────────── */
+
+.grabber {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  color: var(--color-icon-neutral);
+}
+
+.area--disabled .grabber {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Helper ─────────────────────────────────── */
+
+.helper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+.helper--critical {
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-text-critical);
+}
+
+.helper--disabled {
+  color: var(--color-text-disabled);
+}
+
+.helperIcon {
+  flex-shrink: 0;
+}

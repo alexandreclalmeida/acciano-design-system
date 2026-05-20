@@ -1,0 +1,167 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+  user-select: none;
+}
+
+/* ─── Sizes ───────────────────────────────── */
+
+.size--small {
+  --toggle-width: 64px;
+  --toggle-height: 32px;
+  --thumb-size: 32px;
+  gap: var(--spacing-12px);
+}
+
+.size--micro {
+  --toggle-width: 48px;
+  --toggle-height: 24px;
+  --thumb-size: 24px;
+  gap: var(--spacing-8px);
+}
+
+/* ─── Toggle wrapper ──────────────────────── */
+
+.toggle {
+  position: relative;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  flex-shrink: 0;
+}
+
+/* ─── Hidden native input ─────────────────── */
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* ─── Track ───────────────────────────────── */
+
+.track {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-fill-low);
+  border: 1px solid var(--color-stroke-high);
+  /* Elevation/Sunken */
+  box-shadow: var(--elevation-sunken);
+  overflow: visible;
+}
+
+/* Hover / press overlay */
+.track::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: transparent;
+  pointer-events: none;
+  transition: background 0.1s ease;
+}
+
+/* Focus ring */
+.track::after {
+  content: '';
+  display: none;
+  position: absolute;
+  inset: -5px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+/* ─── Thumb ───────────────────────────────── */
+
+.thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: var(--radius-full);
+  background: var(--color-fill-white);
+  border: var(--border-2px) solid var(--color-stroke-high);
+  box-shadow: var(--elevation-raised);
+  transition: left 0.15s ease;
+}
+
+/* ─── Selected state ──────────────────────── */
+
+.root:has(.input:checked) .track {
+  background: var(--color-fill-selected-high);
+  border-color: transparent;
+}
+
+.root:has(.input:checked) .thumb {
+  left: calc(var(--toggle-width) - var(--thumb-size));
+  border-color: var(--color-stroke-selected);
+}
+
+/* ─── Hover / press (via _State basic) ────── */
+
+.root:hover:not([data-disabled]) .track::before {
+  background: var(--color-fill-hover);
+}
+
+.root:active:not([data-disabled]) .track::before {
+  background: var(--color-fill-press);
+}
+
+/* ─── Focus ring ──────────────────────────── */
+
+.input:focus-visible ~ .track::after {
+  display: block;
+}
+
+/* ─── Label ───────────────────────────────── */
+
+.label {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  font-weight: var(--font-weight-normal);
+  font-style: normal;
+  color: var(--color-text-high);
+  white-space: nowrap;
+}
+
+.size--micro .label {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+/* ─── Disabled ────────────────────────────── */
+
+.root[data-disabled] {
+  cursor: not-allowed;
+}
+
+.root[data-disabled] .track {
+  border-color: var(--color-stroke-disabled);
+}
+
+.root[data-disabled] .thumb {
+  border-color: var(--color-stroke-disabled);
+}
+
+.root[data-disabled] .label {
+  color: var(--color-text-disabled);
+}
+
+/* Disabled + selected: muted fill and disabled stroke instead of blue */
+.root[data-disabled]:has(.input:checked) .track {
+  background: var(--color-fill-disabled);
+  border-color: transparent;
+}
+
+.root[data-disabled]:has(.input:checked) .thumb {
+  border-color: var(--color-stroke-disabled);
+}

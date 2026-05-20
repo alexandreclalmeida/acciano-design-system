@@ -1,0 +1,182 @@
+/* ===================================================
+   Alert Global
+   =================================================== */
+
+.alertGlobal {
+  display: flex;
+  border-bottom: var(--border-1px) solid var(--alert-global-border);
+  background-color: var(--alert-global-bg);
+  padding: var(--spacing-16px) var(--spacing-16px) var(--spacing-16px) var(--spacing-24px);
+  overflow: clip;
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex: 1 0 0;
+  gap: var(--spacing-12px);
+  min-width: 0;
+  overflow: clip;
+}
+
+/* Icon */
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--alert-global-icon);
+}
+
+/* Content */
+.content {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  padding-right: var(--spacing-24px);
+}
+
+/* Body text */
+.body {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--alert-global-text);
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Buttons slot */
+.buttonsSlot {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-8px);
+  flex-shrink: 0;
+}
+
+/* Close button */
+.closeBtn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--alert-global-icon);
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  opacity: 0.7;
+}
+
+/* ===================================================
+   Device variants
+   =================================================== */
+
+/* Desktop: items centered, body takes remaining space */
+.device--Desktop {
+  align-items: center;
+  padding-left: var(--spacing-24px);
+}
+
+.device--Desktop .container {
+  align-items: center;
+}
+
+.device--Desktop .content {
+  flex-direction: row;
+  align-items: center;
+}
+
+.device--Desktop .body {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* Mobile: items top-aligned, content stacks vertically */
+.device--Mobile {
+  align-items: flex-start;
+  padding-left: var(--spacing-32px);
+}
+
+.device--Mobile .container {
+  align-items: flex-start;
+}
+
+.device--Mobile .content {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-12px);
+  padding-top: var(--spacing-2px);
+}
+
+.device--Mobile .body {
+  width: 100%;
+}
+
+/* ===================================================
+   Tone variants
+   =================================================== */
+
+.tone--Neutral {
+  --alert-global-bg: var(--color-background-base);
+  --alert-global-border: var(--color-stroke-low);
+  --alert-global-icon: var(--color-icon-neutral);
+  --alert-global-text: var(--color-text-high);
+}
+
+.tone--Brand {
+  --alert-global-bg: var(--color-fill-brand-low);
+  --alert-global-border: var(--color-stroke-brand-low);
+  --alert-global-icon: var(--color-icon-brand);
+  --alert-global-text: var(--color-text-high);
+}
+
+.tone--Info {
+  --alert-global-bg: var(--color-fill-info-low);
+  --alert-global-border: var(--color-stroke-info-low);
+  --alert-global-icon: var(--color-icon-info);
+  --alert-global-text: var(--color-text-high);
+}
+
+.tone--Success {
+  --alert-global-bg: var(--color-fill-success-low);
+  --alert-global-border: var(--color-stroke-success-low);
+  --alert-global-icon: var(--color-icon-success);
+  --alert-global-text: var(--color-text-high);
+}
+
+.tone--Warning {
+  --alert-global-bg: var(--color-fill-warning-low);
+  --alert-global-border: var(--color-stroke-warning-low);
+  --alert-global-icon: var(--color-icon-warning);
+  --alert-global-text: var(--color-text-high);
+}
+
+.tone--Critical {
+  --alert-global-bg: var(--color-fill-critical-low);
+  --alert-global-border: var(--color-stroke-critical-low);
+  --alert-global-icon: var(--color-icon-critical);
+  --alert-global-text: var(--color-text-high);
+}
+
+.tone--InvNeutral {
+  --alert-global-bg: var(--color-background-inverse);
+  --alert-global-border: var(--color-stroke-inverse-low);
+  --alert-global-icon: var(--color-icon-inverse-high);
+  --alert-global-text: var(--color-text-inverse-high);
+}
+
+.tone--InvBrand {
+  --alert-global-bg: var(--color-background-brand);
+  --alert-global-border: var(--color-stroke-inverse-low);
+  --alert-global-icon: var(--color-icon-inverse-high);
+  --alert-global-text: var(--color-text-inverse-high);
+}

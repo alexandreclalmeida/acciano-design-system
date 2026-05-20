@@ -1,0 +1,61 @@
+.nav {
+  display: inline-block;
+}
+
+/* ─── List ───────────────────────────────── */
+
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-8px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Item ───────────────────────────────── */
+
+.item {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-8px);
+}
+
+/* ─── Separator ──────────────────────────── */
+
+.separator {
+  color: var(--color-icon-neutral);
+  flex-shrink: 0;
+}
+
+/* ─── Link ───────────────────────────────── */
+
+.link:hover,
+.link:active {
+  text-decoration: underline;
+}
+
+/* ─── Ellipsis ───────────────────────────── */
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-icon-neutral);
+  border-radius: var(--radius-sm);
+}
+
+.ellipsis:hover {
+  color: var(--color-text-high);
+}
+
+.ellipsis:focus-visible {
+  outline: 2px solid var(--color-stroke-focus);
+  outline-offset: 2px;
+}

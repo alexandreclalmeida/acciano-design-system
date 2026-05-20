@@ -1,0 +1,102 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: var(--radius-full);
+  border: var(--border-1px) solid;
+  padding: 0 var(--spacing-8px);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Sizes ──────────────────────────────── */
+
+.size--Medium {
+  height: 32px;
+}
+
+.size--Small {
+  height: 24px;
+}
+
+/* ─── Tones ──────────────────────────────── */
+
+.tone--Brand {
+  background-color: var(--color-fill-brand-low);
+  border-color: var(--color-stroke-brand-low);
+  color: var(--color-text-brand);
+}
+
+.tone--Neutral {
+  background-color: var(--color-fill-low);
+  border-color: var(--color-stroke-low);
+  color: var(--color-text-high);
+}
+
+.tone--Info {
+  background-color: var(--color-fill-info-low);
+  border-color: var(--color-stroke-info-low);
+  color: var(--color-text-info);
+}
+
+.tone--Success {
+  background-color: var(--color-fill-success-low);
+  border-color: var(--color-stroke-success-low);
+  color: var(--color-text-success);
+}
+
+.tone--Warning {
+  background-color: var(--color-fill-warning-low);
+  border-color: var(--color-stroke-warning-low);
+  color: var(--color-text-warning);
+}
+
+.tone--Critical {
+  background-color: var(--color-fill-critical-low);
+  border-color: var(--color-stroke-critical-low);
+  color: var(--color-text-critical);
+}
+
+.tone--Alter {
+  background-color: var(--color-fill-alter-low);
+  border-color: var(--color-stroke-alter-low);
+  color: var(--color-text-alter);
+}
+
+/* ─── Icon slot ──────────────────────────── */
+
+.iconSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Dot slot ───────────────────────────── */
+
+.dotSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2px) var(--spacing-4px);
+  flex-shrink: 0;
+}
+
+/* ─── Label ──────────────────────────────── */
+
+.label {
+  padding: 0 var(--spacing-4px);
+  font-family: var(--font-paragraph, 'Inter', sans-serif);
+  font-weight: var(--font-weight-normal);
+}
+
+.size--Medium .label {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.size--Small .label {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}

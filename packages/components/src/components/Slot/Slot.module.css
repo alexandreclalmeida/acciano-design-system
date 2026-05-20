@@ -1,0 +1,23 @@
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--spacing-24px) var(--spacing-32px);
+  background-color: var(--color-fill-lower);
+  border: 1px dashed var(--color-stroke-high);
+  border-radius: var(--radius-lg);
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-code, 'Roboto Mono', monospace);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  text-align: center;
+  margin: 0;
+  flex: 1 0 0;
+  min-width: 1px;
+}

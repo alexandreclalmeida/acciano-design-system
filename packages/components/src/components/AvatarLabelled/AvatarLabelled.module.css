@@ -1,0 +1,47 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ─── Gap por tamanho ────────────────────────── */
+
+.gap--Small  { gap: var(--spacing-8px); }
+.gap--Medium { gap: var(--spacing-12px); }
+.gap--Large  { gap: var(--spacing-12px); }
+
+/* ─── Bloco de texto ─────────────────────────── */
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ─── Nome ───────────────────────────────────── */
+
+.name {
+  color: var(--color-text-high);
+  font-family: var(--font-paragraph);
+  font-weight: var(--font-weight-normal);
+}
+
+.name--Small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.name--Medium,
+.name--Large {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+/* ─── Email / subtítulo ──────────────────────── */
+
+.email {
+  color: var(--color-text-low);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  font-weight: var(--font-weight-normal);
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": [
+    ".storybook/**/*",
+    "../../packages/components/src/**/*",
+    "../../packages/logos/src/**/*",
+    "../../packages/icons/src/**/*"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

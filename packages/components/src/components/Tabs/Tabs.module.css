@@ -1,0 +1,139 @@
+/* ─── Tabs ────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ─── TabList ─────────────────────────────────── */
+/* border-bottom é o rail. Os tabs têm margin-bottom: -3px para que
+   o border-bottom deles fique na mesma linha do rail e cubra sua cor
+   quando selecionados. */
+
+.tabList {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  border-bottom: 3px solid var(--color-stroke-low);
+  overflow: visible;
+}
+
+/* ─── Tab ─────────────────────────────────────── */
+
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 var(--spacing-16px);
+  margin-bottom: -3px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Overlay de estado (hover / press) */
+.tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.tab:not(:disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.tab:not(:disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* Focus ring */
+.tab::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xs);
+  pointer-events: none;
+}
+
+.tab:focus-visible::after {
+  display: block;
+}
+
+/* ─── Tab: Selected ───────────────────────────── */
+
+.tab--selected {
+  border-bottom-color: var(--color-stroke-selected);
+}
+
+/* ─── Tab: Disabled ───────────────────────────── */
+
+.tab:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Content ─────────────────────────────────── */
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+}
+
+/* ─── Icon ────────────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.tab--selected .icon {
+  color: var(--color-icon-brand);
+}
+
+.tab:disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Label ───────────────────────────────────── */
+
+.label {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+}
+
+.tab--selected .label {
+  font-weight: var(--font-weight-strong);
+  color: var(--color-text-brand);
+}
+
+.tab:disabled .label {
+  color: var(--color-text-disabled);
+}
+
+/* ─── TabPanel ────────────────────────────────── */
+
+.tabPanel {
+  width: 100%;
+  outline: none;
+}
+
+.tabPanel:focus-visible {
+  outline: var(--border-2px) solid var(--color-stroke-focus);
+  outline-offset: 2px;
+}

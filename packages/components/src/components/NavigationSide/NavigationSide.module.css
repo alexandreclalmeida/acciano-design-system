@@ -1,0 +1,250 @@
+/* ===================================================
+   NavigationSide
+   =================================================== */
+
+/* ─── Desktop root ───────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100%;
+  background-color: var(--color-background-base);
+  border-right: var(--border-1px) solid var(--color-stroke-low);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* ─── Top section ────────────────────────────────── */
+
+.top {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-12px) 0;
+  flex-shrink: 0;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-12px) var(--spacing-24px);
+  height: 72px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Search or other top content — fills width */
+.topContent {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-12px) var(--spacing-24px);
+  height: 72px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.topContent > * {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* ─── Middle section ─────────────────────────────── */
+
+.middle {
+  flex: 1 0 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ─── Bottom section ─────────────────────────────── */
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--spacing-12px);
+  flex-shrink: 0;
+}
+
+/* ─── Mobile closed bar ──────────────────────────── */
+
+.mobileBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 72px;
+  padding: 0 var(--spacing-16px);
+  background-color: var(--color-background-base);
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+  box-sizing: border-box;
+}
+
+.mobileMenuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  position: relative;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.mobileMenuBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.mobileMenuBtn:hover::before {
+  background: var(--color-fill-hover);
+}
+
+.mobileMenuBtn:active::before {
+  background: var(--color-fill-press);
+}
+
+.mobileMenuBtn:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.mobileMenuIcon {
+  color: var(--color-icon-neutral);
+  position: relative;
+}
+
+.mobileBarLogo {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.mobileBarRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-10px);
+  flex-shrink: 0;
+}
+
+/* ─── Mobile open overlay ────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-fill-overlay);
+}
+
+/* ─── Mobile open panel ──────────────────────────── */
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 100%;
+  background-color: var(--color-background-base);
+  border-right: var(--border-1px) solid var(--color-stroke-low);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    width: calc(100vw - 64px);
+  }
+}
+
+/* ─── Mobile close row ───────────────────────────── */
+
+.mobileCloseRow {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding: 0 var(--spacing-12px);
+  flex-shrink: 0;
+}
+
+.mobileCloseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  position: relative;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.mobileCloseBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.mobileCloseBtn:hover::before {
+  background: var(--color-fill-hover);
+}
+
+.mobileCloseBtn:active::before {
+  background: var(--color-fill-press);
+}
+
+.mobileCloseBtn:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.mobileCloseIcon {
+  color: var(--color-icon-neutral);
+  position: relative;
+}
+
+/* Top content within mobile panel */
+.mobileTopContent {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-12px) var(--spacing-24px);
+  height: 72px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.mobileTopContent > * {
+  flex: 1 0 0;
+  min-width: 0;
+}

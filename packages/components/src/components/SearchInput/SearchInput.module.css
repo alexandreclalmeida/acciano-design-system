@@ -1,0 +1,175 @@
+/* ─── Root ───────────────────────────────────── */
+
+.root {
+  --_field-height: 48px;
+  --_content-px: var(--spacing-16px);
+  --_text-size: var(--font-size-base);
+  --_text-lh: var(--line-height-base);
+
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+/* Focus ring no root — não é clipado pelo overflow:hidden do field */
+.root::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -5px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.root:has(input:focus-visible)::after {
+  display: block;
+}
+
+/* ─── Size ───────────────────────────────────── */
+
+.size--Small {
+  --_field-height: 32px;
+  --_content-px: var(--spacing-12px);
+  --_text-size: var(--font-size-small);
+  --_text-lh: var(--line-height-small);
+}
+
+/* ─── Field ───────────────────────────────────── */
+
+.field {
+  --_state-inset: -1px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: var(--_field-height);
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-fill-inverse-high);
+  border: var(--border-1px) solid var(--color-stroke-high);
+  border-radius: var(--radius-lg);
+  cursor: text;
+}
+
+/* State overlay (hover / press) */
+.field::before {
+  content: '';
+  position: absolute;
+  inset: var(--_state-inset);
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.field:not(.field--disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.field:not(.field--disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* Button variant — campo perde borda e radius direitos */
+.field--button {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Disabled */
+.field--disabled {
+  border-color: var(--color-stroke-disabled);
+  cursor: default;
+}
+
+/* ─── Content ─────────────────────────────────── */
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--spacing-8px);
+  height: 100%;
+  min-width: 0;
+  padding: 0 var(--_content-px);
+  border-radius: inherit;
+}
+
+/* ─── Input ──────────────────────────────────── */
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--_text-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--_text-lh);
+  color: var(--color-text-high);
+  caret-color: var(--color-stroke-focus);
+}
+
+.input::placeholder {
+  color: var(--color-text-low);
+}
+
+.input:disabled {
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+
+.input:disabled::placeholder {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Icons ──────────────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.field--disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Clear button ────────────────────────────── */
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text-low);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.clearButton:hover {
+  color: var(--color-text-high);
+}
+
+.clearButton:focus-visible {
+  outline: var(--border-2px) solid var(--color-stroke-focus);
+  outline-offset: 2px;
+}
+
+/* ─── Search button (Button variant) ─────────── */
+/* Remove os radius esquerdos para encostar no campo */
+
+.searchButton {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}

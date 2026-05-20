@@ -1,0 +1,320 @@
+/* ===================================================
+   Alert
+   =================================================== */
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  border-radius: var(--radius-lg);
+  overflow: clip;
+  position: relative;
+  background-color: var(--alert-bg);
+  box-shadow: inset 0 0 0 var(--border-1px) var(--alert-border);
+}
+
+/* Left bar */
+.bar {
+  width: 4px;
+  align-self: stretch;
+  flex-shrink: 0;
+  background-color: var(--alert-bar);
+}
+
+/* Container — wraps icon/capsule + content + close */
+.container {
+  display: flex;
+  flex: 1 0 0;
+  gap: var(--spacing-12px);
+  align-items: flex-start;
+  min-width: 0;
+  overflow: clip;
+  position: relative;
+}
+
+/* Bare icon */
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--alert-icon);
+}
+
+/* Capsule (circular icon container) */
+.capsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: var(--spacing-12px);
+  border-radius: var(--radius-full);
+  background-color: var(--alert-capsule-bg);
+  color: var(--alert-icon);
+}
+
+/* ===================================================
+   Large content structure
+   =================================================== */
+
+/* Content — outermost text wrapper */
+.content {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4px);
+  align-items: flex-start;
+  padding-right: var(--spacing-24px);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-lead);
+  color: var(--alert-text-heading);
+  width: 100%;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Elements — stacks body / list / link / buttons */
+.elements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16px);
+  align-items: flex-start;
+  width: 100%;
+  padding-top: var(--spacing-2px);
+}
+
+.body {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--alert-text-body);
+  width: 100%;
+  margin: 0;
+  word-break: break-word;
+}
+
+.list {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--alert-text-body);
+  list-style-type: disc;
+  padding-left: 21px;
+  margin: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.linkSlot {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+  flex-shrink: 0;
+}
+
+.buttonsSlot {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-8px);
+  flex-shrink: 0;
+}
+
+/* Close button */
+.closeBtn {
+  position: absolute;
+  right: var(--spacing-16px);
+  top: var(--spacing-16px);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--alert-icon);
+  flex-shrink: 0;
+  overflow: clip;
+}
+
+.closeBtn:hover {
+  opacity: 0.7;
+}
+
+/* ===================================================
+   Size variants
+   =================================================== */
+
+/* Large: padding 24px */
+.size--Large .container {
+  padding: var(--spacing-24px);
+}
+
+/* Small: padding 16px */
+.size--Small .container {
+  padding: var(--spacing-16px);
+}
+
+/* Small: content becomes flex-row (text + link/buttons side by side) */
+.size--Small .content {
+  flex-direction: row;
+  gap: var(--spacing-12px);
+  align-items: center;
+}
+
+/* Small: text area within content takes remaining space */
+.textArea {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4px);
+  align-items: flex-start;
+  padding-top: var(--spacing-2px);
+}
+
+/* Small: heading is smaller and uses paragraph font */
+.size--Small .heading {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-small);
+}
+
+/* Small: body is smaller */
+.size--Small .body {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+/* ===================================================
+   Layout variants
+   =================================================== */
+
+/* Vertical: container stacks icon/capsule + content */
+.layout--Vertical .container {
+  flex-direction: column;
+}
+
+/* Large + Vertical: content is full width (not flex-1) */
+.size--Large.layout--Vertical .content {
+  flex: none;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Large + Vertical: no top padding on elements */
+.size--Large.layout--Vertical .elements {
+  padding-top: 0;
+}
+
+/* Small + Vertical: content stacks instead of rows */
+.size--Small.layout--Vertical .content {
+  flex-direction: column;
+  gap: var(--spacing-8px);
+  align-items: flex-start;
+  flex: none;
+  width: 100%;
+}
+
+/* Small + Vertical: textArea is full width, no top offset */
+.size--Small.layout--Vertical .textArea {
+  flex: none;
+  min-width: 0;
+  width: 100%;
+  padding-top: 0;
+}
+
+/* ===================================================
+   Tone variants
+   =================================================== */
+
+.tone--Neutral {
+  --alert-bg: var(--color-fill-low);
+  --alert-border: var(--color-stroke-low);
+  --alert-bar: var(--color-stroke-high);
+  --alert-icon: var(--color-icon-neutral);
+  --alert-text-heading: var(--color-text-high);
+  --alert-text-body: var(--color-text-low);
+  --alert-capsule-bg: var(--color-fill-low);
+}
+
+.tone--Brand {
+  --alert-bg: var(--color-fill-brand-low);
+  --alert-border: var(--color-stroke-brand-low);
+  --alert-bar: var(--color-icon-brand);
+  --alert-icon: var(--color-icon-brand);
+  --alert-text-heading: var(--color-text-high);
+  --alert-text-body: var(--color-text-low);
+  --alert-capsule-bg: var(--color-fill-brand-low);
+}
+
+.tone--Info {
+  --alert-bg: var(--color-fill-info-low);
+  --alert-border: var(--color-stroke-info-low);
+  --alert-bar: var(--color-icon-info);
+  --alert-icon: var(--color-icon-info);
+  --alert-text-heading: var(--color-text-high);
+  --alert-text-body: var(--color-text-low);
+  --alert-capsule-bg: var(--color-fill-info-low);
+}
+
+.tone--Success {
+  --alert-bg: var(--color-fill-success-low);
+  --alert-border: var(--color-stroke-success-low);
+  --alert-bar: var(--color-icon-success);
+  --alert-icon: var(--color-icon-success);
+  --alert-text-heading: var(--color-text-high);
+  --alert-text-body: var(--color-text-low);
+  --alert-capsule-bg: var(--color-fill-success-low);
+}
+
+.tone--Warning {
+  --alert-bg: var(--color-fill-warning-low);
+  --alert-border: var(--color-stroke-warning-low);
+  --alert-bar: var(--color-icon-warning);
+  --alert-icon: var(--color-icon-warning);
+  --alert-text-heading: var(--color-text-high);
+  --alert-text-body: var(--color-text-low);
+  --alert-capsule-bg: var(--color-fill-warning-low);
+}
+
+.tone--Critical {
+  --alert-bg: var(--color-fill-critical-low);
+  --alert-border: var(--color-stroke-critical-low);
+  --alert-bar: var(--color-icon-critical);
+  --alert-icon: var(--color-icon-critical);
+  --alert-text-heading: var(--color-text-high);
+  --alert-text-body: var(--color-text-low);
+  --alert-capsule-bg: var(--color-fill-critical-low);
+}
+
+.tone--InvNeutral {
+  --alert-bg: var(--color-background-inverse);
+  --alert-border: var(--color-stroke-inverse-low);
+  --alert-bar: var(--color-stroke-inverse-high);
+  --alert-icon: var(--color-icon-inverse-high);
+  --alert-text-heading: var(--color-text-inverse-high);
+  --alert-text-body: var(--color-text-inverse-low);
+  --alert-capsule-bg: var(--color-fill-inverse-low);
+}
+
+.tone--InvBrand {
+  --alert-bg: var(--color-background-brand);
+  --alert-border: var(--color-stroke-inverse-low);
+  --alert-bar: var(--color-stroke-inverse-high);
+  --alert-icon: var(--color-icon-inverse-high);
+  --alert-text-heading: var(--color-text-inverse-high);
+  --alert-text-body: var(--color-text-inverse-low);
+  --alert-capsule-bg: var(--color-fill-inverse-low);
+}

@@ -1,0 +1,38 @@
+.loadingBar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+  width: 100%;
+}
+
+/* ─── Track ──────────────────────────────── */
+
+.track {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-fill-low);
+  box-shadow: inset 0 0 0 1px var(--color-stroke-low);
+  overflow: hidden;
+}
+
+/* ─── Bar ────────────────────────────────── */
+
+.bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background-color: var(--color-fill-selected-high);
+  transition: width 0.3s ease;
+}
+
+/* ─── Label ──────────────────────────────── */
+
+.label {
+  flex-shrink: 0;
+  width: 40px;
+  text-align: right;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}

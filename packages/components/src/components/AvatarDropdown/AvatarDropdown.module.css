@@ -1,0 +1,64 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8px);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-text-high);
+  text-align: left;
+}
+
+/* ─── State overlay (hover / press) ─────────────── */
+
+.root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.root:not(:disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.root:not(:disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* ─── Type: Button ───────────────────────────────── */
+
+.type--Button {
+  padding: var(--spacing-8px) var(--spacing-16px);
+  border-radius: var(--radius-lg);
+}
+
+/* ─── Type: Navigation ───────────────────────────── */
+
+.type--Navigation {
+  display: flex;
+  width: 100%;
+  padding: var(--spacing-12px) var(--spacing-24px);
+}
+
+/* AvatarLabelled dentro de Navigation ocupa o espaço restante */
+.labelFlex {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Ícone (chevron / more) ─────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+/* ─── Disabled ───────────────────────────────────── */
+
+.disabled {
+  opacity: 0.3;
+  cursor: default;
+}

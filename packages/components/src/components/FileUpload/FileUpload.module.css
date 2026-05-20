@@ -1,0 +1,166 @@
+/* ─── Root ───────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8px);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ─── Label ───────────────────────────────────── */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: 0 var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  cursor: default;
+}
+
+.labelText {
+  white-space: nowrap;
+}
+
+.labelRequired {
+  color: var(--color-text-warning);
+}
+
+.labelOptional {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Drop area ───────────────────────────────── */
+
+.dropArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-24px);
+  padding: var(--spacing-32px);
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--color-fill-lower);
+  border: var(--border-1px) dashed var(--color-stroke-high);
+  border-radius: var(--radius-2xl);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.dropArea--error {
+  background-color: var(--color-fill-critical-low);
+  border-color: var(--color-stroke-critical-high);
+}
+
+.dropArea--dragging {
+  background-color: var(--color-fill-low);
+  border-color: var(--color-stroke-brand-high);
+}
+
+/* ─── Hidden file input ───────────────────────── */
+
+.hiddenInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─── Inner container ─────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-16px);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ─── Icon capsule ────────────────────────────── */
+
+.iconCapsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12px);
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-fill-brand-low);
+}
+
+.iconCapsule--error {
+  background-color: var(--color-fill-critical-low);
+}
+
+/* ─── Upload icon ─────────────────────────────── */
+
+.uploadIcon {
+  color: var(--color-icon-brand);
+}
+
+.uploadIcon--error {
+  color: var(--color-icon-critical);
+}
+
+/* ─── Drop text ───────────────────────────────── */
+
+.dropText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4px);
+  flex-shrink: 0;
+}
+
+.dropHeading {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  white-space: nowrap;
+}
+
+.dropSubtext {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Helper ─────────────────────────────────── */
+
+.helper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+.helper--critical {
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-text-critical);
+}
+
+.helperIcon {
+  flex-shrink: 0;
+  color: var(--color-icon-critical);
+}

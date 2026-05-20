@@ -1,0 +1,190 @@
+/* ===================================================
+   Modal
+   =================================================== */
+
+/* Backdrop — full-screen overlay */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-fill-overlay);
+  -webkit-backdrop-filter: blur(var(--blur-8px));
+  backdrop-filter: blur(var(--blur-8px));
+  z-index: 1000;
+}
+
+/* Dialog panel */
+.dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24px);
+  align-items: flex-start;
+  padding: var(--spacing-32px);
+  background-color: var(--color-background-overlay);
+  border: var(--border-1px) solid var(--color-stroke-low);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--elevation-overlay);
+  outline: none;
+}
+
+/* Sizes */
+.size--Small {
+  width: 500px;
+}
+
+.size--Large {
+  width: 700px;
+}
+
+/* ===================================================
+   Image
+   =================================================== */
+
+.image {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  height: 245px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+/* ===================================================
+   Content (capsule + text + slot)
+   =================================================== */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24px);
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Capsule icon + text block stacked */
+.capsuleAndText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16px);
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.capsuleSlot {
+  flex-shrink: 0;
+}
+
+/* Heading + description stacked */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8px);
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* When close button is present, offset heading to avoid overlap */
+.headingRow--withClose {
+  padding-right: var(--spacing-48px);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-lead);
+  color: var(--color-text-high);
+  margin: 0;
+  flex-shrink: 0;
+  word-break: break-word;
+}
+
+.description {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-low);
+  margin: 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+/* Slot (children) */
+.slot {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   Button group
+   =================================================== */
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-16px);
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   Close button
+   =================================================== */
+
+.closeBtn {
+  position: absolute;
+  top: var(--spacing-16px);
+  right: var(--spacing-16px);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--color-icon-neutral);
+  flex-shrink: 0;
+  overflow: clip;
+}
+
+.closeBtn:hover {
+  opacity: 0.8;
+}
+
+/* ===================================================
+   Mobile — bottom sheet
+   =================================================== */
+
+@media (max-width: 640px) {
+  .backdrop {
+    align-items: flex-end;
+    padding: var(--spacing-16px);
+  }
+
+  .dialog {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Stack buttons vertically on mobile */
+  .buttons {
+    flex-direction: column;
+  }
+}

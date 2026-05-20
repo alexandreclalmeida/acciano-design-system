@@ -1,0 +1,280 @@
+/* ─── Root ───────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4px);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ─── Label ───────────────────────────────────── */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: 0 var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-emphasis);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  cursor: default;
+}
+
+.root--disabled .label {
+  color: var(--color-text-disabled);
+}
+
+.labelText {
+  white-space: nowrap;
+}
+
+.labelRequired {
+  color: var(--color-text-warning);
+}
+
+.labelOptional {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+  white-space: nowrap;
+}
+
+/* ─── Field wrap ──────────────────────────────── */
+
+.fieldWrap {
+  position: relative;
+  width: 100%;
+}
+
+.fieldWrap::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -5px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.fieldWrap:has(.field--critical)::after {
+  inset: -6px;
+}
+
+.fieldWrap:has(.field:focus-visible)::after {
+  display: block;
+}
+
+/* ─── Field ───────────────────────────────────── */
+
+.field {
+  --_state-inset: -1px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--color-fill-inverse-high);
+  border: var(--border-1px) solid var(--color-stroke-high);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  outline: none;
+}
+
+/* State overlay */
+.field::before {
+  content: '';
+  position: absolute;
+  inset: var(--_state-inset);
+  border-radius: inherit;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+  z-index: 0;
+}
+
+.field:not(.field--disabled):hover::before {
+  background-color: var(--color-fill-hover);
+}
+
+.field:not(.field--disabled):active::before {
+  background-color: var(--color-fill-press);
+}
+
+/* ─── Critical ───────────────────────────────── */
+
+.field--critical {
+  --_state-inset: -2px;
+
+  background-color: var(--color-fill-critical-low);
+  border-width: var(--border-2px);
+  border-color: var(--color-stroke-critical-high);
+}
+
+/* ─── Disabled ───────────────────────────────── */
+
+.field--disabled {
+  border-color: var(--color-stroke-disabled);
+  cursor: default;
+}
+
+/* ─── Content ─────────────────────────────────── */
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--spacing-8px);
+  height: 100%;
+  min-width: 0;
+  padding: 0 var(--spacing-16px);
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* ─── Single mode: value text ────────────────── */
+
+.valueText {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.valueText--placeholder {
+  color: var(--color-text-low);
+}
+
+.field--disabled .valueText {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Multiple mode: input area ──────────────── */
+/* Takes all available horizontal space between the tags and the trailing icons. */
+
+.inputArea {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ─── Multiple mode: tag group ───────────────── */
+
+.tagGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--spacing-4px);
+  flex: none;
+}
+
+/* ─── Multiple mode: overflow count chip (+N) ── */
+
+.overflowCount {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 var(--spacing-8px);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-stroke-low);
+  background-color: var(--color-fill-low);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  white-space: nowrap;
+}
+
+.field--disabled .overflowCount {
+  border-color: var(--color-stroke-disabled);
+  background-color: var(--color-fill-disabled);
+  color: var(--color-text-disabled);
+}
+
+/* ─── Multiple mode: auxiliar (clear separator) */
+
+.auxiliar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-right: var(--spacing-8px);
+  border-right: var(--border-1px) solid var(--color-stroke-low);
+}
+
+/* ─── Clear all button ───────────────────────── */
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.clearIcon {
+  color: var(--color-icon-neutral);
+}
+
+.clearButton:hover .clearIcon {
+  color: var(--color-icon-high);
+}
+
+/* ─── Chevron icon ───────────────────────────── */
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.field--disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Helper ─────────────────────────────────── */
+
+.helper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4px);
+  padding: var(--spacing-2px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+.helper--critical {
+  font-weight: var(--font-weight-emphasis);
+  color: var(--color-text-critical);
+}
+
+.helper--disabled {
+  color: var(--color-text-disabled);
+}
+
+.helperIcon {
+  flex-shrink: 0;
+  color: var(--color-icon-critical);
+}

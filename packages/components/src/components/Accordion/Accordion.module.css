@@ -1,0 +1,130 @@
+/* ─── Root ───────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: var(--border-1px) solid var(--color-stroke-low);
+}
+
+/* ─── Item ───────────────────────────────────────── */
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: var(--border-1px) solid var(--color-stroke-low);
+}
+
+.item--disabled {
+  border-top-color: var(--color-stroke-disabled);
+}
+
+/* State overlay — cobre toda a área do item (header + content quando aberto).
+   Estende -1px no topo para incluir o border-top no efeito. */
+.item::before {
+  content: '';
+  position: absolute;
+  inset: -1px 0 0 0;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 0.1s;
+}
+
+.item:has(.trigger:not(:disabled):hover)::before {
+  background-color: var(--color-fill-hover);
+}
+
+.item:has(.trigger:not(:disabled):active)::before {
+  background-color: var(--color-fill-press);
+}
+
+/* ─── Trigger (header button) ────────────────────── */
+
+.trigger {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  padding: var(--spacing-16px) 0;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-24px);
+  width: 100%;
+}
+
+/* When item is open, remove bottom padding (content handles it) */
+.item--open .trigger {
+  padding-bottom: 0;
+}
+
+/* Focus ring */
+.trigger::after {
+  content: '';
+  position: absolute;
+  display: none;
+  inset: -4px;
+  border: var(--border-2px) solid var(--color-stroke-focus);
+  pointer-events: none;
+}
+
+.trigger:focus-visible::after {
+  display: block;
+}
+
+.trigger:disabled {
+  cursor: default;
+}
+
+/* ─── Heading ────────────────────────────────────── */
+
+.heading {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-strong);
+  line-height: var(--line-height-base);
+  color: var(--color-text-high);
+  word-break: break-word;
+}
+
+.trigger:disabled .heading {
+  color: var(--color-text-disabled);
+}
+
+/* ─── Icon ───────────────────────────────────────── */
+
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  color: var(--color-icon-neutral);
+}
+
+.trigger:disabled .icon {
+  color: var(--color-icon-disabled);
+}
+
+/* ─── Content ────────────────────────────────────── */
+
+.content {
+  padding-top: var(--spacing-8px);
+  padding-right: var(--spacing-32px);
+  padding-bottom: var(--spacing-16px);
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-low);
+}
+
+.item--disabled .content {
+  color: var(--color-text-disabled);
+}

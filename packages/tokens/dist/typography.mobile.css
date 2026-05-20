@@ -1,0 +1,45 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-display: 48px;
+    --font-size-h1: 36px;
+    --font-size-h2: 30px;
+    --font-size-h3: 24px;
+    --font-size-h4: 20px;
+    --font-size-h5: 20px;
+    --font-size-lead: 20px;
+    --font-size-large: 18px;
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-tiny: 12px;
+    --font-size-nano: 11px;
+    --font-weight-weak: 300;
+    --font-weight-normal: 400;
+    --font-weight-emphasis: 500;
+    --font-weight-strong: 600;
+    --font-weight-stronger: 700;
+    --letter-spacing-tighter: -0.8px;
+    --letter-spacing-tight: -0.4px;
+    --letter-spacing-normal: 0px;
+    --letter-spacing-wide: 0.4px;
+    --letter-spacing-wider: 0.8px;
+    --letter-spacing-widest: 1.6px;
+    --line-height-display: 56px;
+    --line-height-h1: 40px;
+    --line-height-h2: 36px;
+    --line-height-h3: 32px;
+    --line-height-h4: 28px;
+    --line-height-h5: 28px;
+    --line-height-lead: 28px;
+    --line-height-large: 28px;
+    --line-height-base: 24px;
+    --line-height-small: 20px;
+    --line-height-tiny: 16px;
+    --font-heading: Inter;
+    --font-paragraph: Inter;
+    --font-code: Roboto Mono;
+  }
+}

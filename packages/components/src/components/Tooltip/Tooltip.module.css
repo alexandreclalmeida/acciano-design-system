@@ -1,0 +1,137 @@
+/* ─── Root ────────────────────────────────────── */
+/* display: inline-block para o root se ajustar ao trigger e o
+   position: relative servir de origem para o tooltip absoluto. */
+
+.root {
+  display: inline-block;
+  position: relative;
+}
+
+/* ─── Tooltip container ───────────────────────── */
+/* filter: drop-shadow aplica a sombra no shape completo
+   (balão + seta) em vez de apenas no bounding box. */
+
+.tooltip {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.tooltip--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ─── Directions ──────────────────────────────── */
+
+.direction--up,
+.direction--down {
+  flex-direction: column;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.direction--up {
+  bottom: calc(100% + 4px);
+}
+
+.direction--down {
+  top: calc(100% + 4px);
+}
+
+.direction--left,
+.direction--right {
+  flex-direction: row;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.direction--left {
+  right: calc(100% + 4px);
+}
+
+.direction--right {
+  left: calc(100% + 4px);
+}
+
+/* ─── Arrow wrap ──────────────────────────────── */
+/* Para Up/Down: centraliza a seta horizontalmente com largura total.
+   Para Left/Right: ocupa a altura do balão e centraliza verticalmente. */
+
+.arrowWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.arrowWrap--up,
+.arrowWrap--down {
+  width: 100%;
+  padding: 0 var(--spacing-16px);
+}
+
+.arrowWrap--left,
+.arrowWrap--right {
+  align-self: stretch;
+  padding: var(--spacing-12px) 0;
+}
+
+/* ─── Arrow SVG ───────────────────────────────── */
+
+.arrow {
+  display: block;
+  flex-shrink: 0;
+  color: var(--color-background-inverse);
+}
+
+/* ─── Balloon ─────────────────────────────────── */
+
+.balloon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--spacing-16px) var(--spacing-24px);
+  background-color: var(--color-background-inverse);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-overlay);
+}
+
+.balloon--large {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-4px);
+  width: 256px;
+}
+
+/* ─── Content (title / single text) ──────────── */
+
+.content {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-inverse-high);
+  white-space: nowrap;
+}
+
+.content--large {
+  font-weight: var(--font-weight-strong);
+  white-space: normal;
+}
+
+/* ─── Description ─────────────────────────────── */
+
+.description {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-small);
+  color: var(--color-text-inverse-low);
+}

@@ -1,0 +1,62 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --blur-none: 0px;
+  --blur-4px: 4px;
+  --blur-8px: 8px;
+  --blur-12px: 12px;
+  --blur-16px: 16px;
+  --blur-24px: 24px;
+  --blur-40px: 40px;
+  --blur-64px: 64px;
+  --border-none: 0px;
+  --border-1px: 1px;
+  --border-2px: 2px;
+  --border-4px: 4px;
+  --spacing-none: 0px;
+  --spacing-1px: 1px;
+  --spacing-2px: 2px;
+  --spacing-4px: 4px;
+  --spacing-6px: 6px;
+  --spacing-8px: 8px;
+  --spacing-10px: 10px;
+  --spacing-12px: 12px;
+  --spacing-14px: 14px;
+  --spacing-16px: 16px;
+  --spacing-20px: 20px;
+  --spacing-24px: 24px;
+  --spacing-28px: 28px;
+  --spacing-32px: 32px;
+  --spacing-36px: 36px;
+  --spacing-40px: 40px;
+  --spacing-44px: 44px;
+  --spacing-48px: 48px;
+  --spacing-56px: 56px;
+  --spacing-64px: 64px;
+  --spacing-80px: 80px;
+  --spacing-96px: 96px;
+  --spacing-112px: 112px;
+  --spacing-128px: 128px;
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-15px: 15px;
+  --radius-2xl: 16px;
+  --radius-20px: 20px;
+  --radius-3xl: 24px;
+  --radius-full: 999px;
+  --grid-desktop-columns: 12;
+  --grid-desktop-margin: 120px;
+  --grid-desktop-gutter: 32px;
+  --grid-tablet-columns: 8;
+  --grid-tablet-margin: 48px;
+  --grid-tablet-gutter: 24px;
+  --grid-mobile-columns: 4;
+  --grid-mobile-margin: 32px;
+  --grid-mobile-gutter: 16px;
+}

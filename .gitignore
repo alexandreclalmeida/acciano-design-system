@@ -1,0 +1,15 @@
+# Build outputs — pacotes compilados
+packages/components/dist/
+packages/icons/dist/
+packages/logos/dist/
+storybook-static/
+
+# Tokens dist é versionado intencionalmente — sobrescreve a regra global
+!packages/tokens/dist/
+!packages/tokens/dist/**
+
+# TypeScript
+*.tsbuildinfo
+
+# npm
+.npm
