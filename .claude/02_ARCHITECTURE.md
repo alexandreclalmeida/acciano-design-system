@@ -8,7 +8,7 @@ O Acciano é um **monorepo de design system**, organizado para separar tokens, c
 acciano-design-system/
 ├── .github/                        # CI/CD e configurações do GitHub
 │   └── workflows/
-│       └── ci.yml
+│       └── chromatic.yml
 │
 ├── packages/
 │   ├── tokens/                     # Design tokens (fonte da verdade)
@@ -118,6 +118,7 @@ Cada componente tem sua própria pasta com:
 O Lucide Icons (`lucide-react`) é uma dependência externa usada diretamente pelos componentes — seus ícones **não** são copiados para `packages/icons`.
 
 O fluxo de build dos ícones custom é:
+
 1. SVG exportado do Figma → salvo em `svgs/custom/`
 2. `npm run build` no pacote → `scripts/build-icons.ts` lê os SVGs e gera `src/generated/custom.tsx`
 3. O `index.ts` é regravado automaticamente — exporta tudo de `generated/custom`

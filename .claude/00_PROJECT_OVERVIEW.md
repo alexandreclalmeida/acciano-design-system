@@ -25,6 +25,8 @@ O Acciano serve como:
 - ✅ Layout grids (tokens em foundations.css + story de documentação no Storybook)
 - ✅ 50+ componentes React implementados e documentados no Storybook
 - ✅ Storybook configurado com addon-themes (light/dark), addon-a11y, addon-docs, DocsPage global
+- ✅ Repositório público no GitHub
+- ✅ Storybook publicado via Chromatic com deploy automático
 
 ---
 
@@ -129,6 +131,19 @@ Componentes que dependem ou compõem outros elementos do DS.
 - ✅ `Navigation Header` — NavigationHeaderItem + NavigationHeader (Desktop/MobileClosed/MobileOpen)
 - ✅ `Footer` — 3 sizes (Small/Large/About) × 3 devices; brand icons SVG inline
 - ✅ `Hero` — 5 tipos × 3 devices; slot-based API (emailSlot, buttonsSlot, socialSlot, tag)
+
+### Fase 12 — Infraestrutura e publicação ✅
+
+- ✅ `.gitignore` configurado (projeto + alinhado com `.gitignore_global` do macOS/Windows)
+- ✅ Repositório público no GitHub — `github.com/alexandreclalmeida/acciano-design-system`
+- ✅ README público com links para Figma, Storybook e LinkedIn
+- ✅ `packages/tokens/dist/` versionado intencionalmente (force include no `.gitignore`)
+- ✅ Chromatic configurado — Storybook publicado em `https://main--6a0dbefde23c1c4677b98a9e.chromatic.com`
+- ✅ GitHub Actions — workflow `chromatic.yml` com deploy automático a cada push para `main`
+- ✅ `CHROMATIC_PROJECT_TOKEN` configurado como secret no GitHub (não exposto no código)
+- ✅ Integração Figma ↔ Chromatic habilitada (linking de stories a componentes do Figma — a configurar progressivamente)
+- ✅ `docs/decisions/` — pasta criada para ADRs (Architecture Decision Records)
+- ✅ Ordem de build corrigida no monorepo: `tokens → icons → logos → components`
 
 ---
 
