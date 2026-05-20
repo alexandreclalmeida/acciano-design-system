@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Dot } from "./Dot";
 
 const meta: Meta<typeof Dot> = {
+  title: "Components/Dot",
   component: Dot,
   parameters: {
     layout: "centered",

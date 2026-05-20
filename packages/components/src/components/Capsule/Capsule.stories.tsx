@@ -4,6 +4,7 @@ import { ICON_OPTIONS, ICON_MAPPING } from "../../storybook/lucide-icons";
 import { Capsule } from "./Capsule";
 
 const meta: Meta<typeof Capsule> = {
+  title: "Components/Capsule",
   component: Capsule,
   parameters: {
     layout: "centered",

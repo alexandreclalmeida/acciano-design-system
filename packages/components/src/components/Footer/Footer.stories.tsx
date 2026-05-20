@@ -70,6 +70,7 @@ const DESCRIPTION =
 // ─── Meta ───────────────────────────────────────────────────────
 
 const meta: Meta<typeof Footer> = {
+  title: "Components/Footer",
   component: Footer,
   parameters: {
     layout: "fullscreen",

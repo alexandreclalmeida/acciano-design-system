@@ -5,6 +5,7 @@ import { Text } from "./Text";
 const SAMPLE = "The quick brown fox jumps over the lazy dog.";
 
 const meta: Meta<typeof Text> = {
+  title: "Components/Text",
   component: Text,
   parameters: {
     layout: "centered",

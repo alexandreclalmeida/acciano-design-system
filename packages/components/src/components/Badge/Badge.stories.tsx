@@ -4,6 +4,7 @@ import { ICON_OPTIONS, ICON_MAPPING } from "../../storybook/lucide-icons";
 import { Badge } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
+  title: "Components/Badge",
   component: Badge,
   parameters: {
     layout: "centered",

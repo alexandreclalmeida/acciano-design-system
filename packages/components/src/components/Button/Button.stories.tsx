@@ -3,6 +3,7 @@ import { ICON_OPTIONS, ICON_MAPPING } from "../../storybook/lucide-icons";
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
+  title: "Components/Button",
   component: Button,
   parameters: {
     layout: "centered",

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Count } from "./Count";
 
 const meta: Meta<typeof Count> = {
+  title: "Components/Count",
   component: Count,
   parameters: {
     layout: "centered",
