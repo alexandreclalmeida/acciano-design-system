@@ -2,7 +2,7 @@
 
 A personal design system — tokens, components, and documentation in one place.
 
-Acciano started as a UI engineering study and evolved into a complete design system: structured tokens, 50+ React components, and interactive documentation via Storybook. Every component originates from a Figma UI Kit and is implemented without third-party component libraries.
+Acciano started as a UI engineering study and evolved into a complete design system: structured tokens, 60+ React components, and interactive documentation via Storybook. Every component originates from a Figma UI Kit and is implemented without third-party component libraries.
 
 **[View in Figma](https://www.figma.com/design/uiFtDBaCNOzuTtDZgza3Zb/Acciano-UI-Design-Kit)** · **[Storybook](https://main--6a0dbefde23c1c4677b98a9e.chromatic.com)** · **[LinkedIn](https://www.linkedin.com/in/alexandre-lopes-almeida)**
 
@@ -29,6 +29,8 @@ acciano-design-system/
 - **Style Dictionary** for token generation
 - **Storybook** for documentation
 - **Lucide Icons** for UI iconography
+- **Vitest** + **Playwright** for automated accessibility testing
+- **GitHub Actions** + **Chromatic** for CI/CD
 
 No third-party component libraries. Every component is custom-built from the Figma source.
 
@@ -40,6 +42,7 @@ Six CSS files are generated from JSON sources:
 
 | File                     | Contents                            |
 | ------------------------ | ----------------------------------- |
+| `base.css`               | Font smoothing, SVG rendering       |
 | `foundations.css`        | Spacing, radius, border, blur, grid |
 | `color.light.css`        | Semantic color tokens — light mode  |
 | `color.dark.css`         | Semantic color tokens — dark mode   |
@@ -64,9 +67,9 @@ Storybook runs at `http://localhost:6006`.
 
 ## Components
 
-50+ components across 11 implementation phases — from primitives to full page-level compositions.
+60+ components across 13 implementation phases — from primitives to full page-level compositions.
 
-Phases covered: primitives · composition · interactive controls · actions & avatars · forms · navigation · overlays · content · page-level components.
+Phases covered: primitives · composition · interactive controls · actions & avatars · forms · navigation · overlays · content · page-level components · automated accessibility testing.
 
 Full component inventory and status available in [`.claude/05_COMPONENTS.md`](.claude/05_COMPONENTS.md).
 
