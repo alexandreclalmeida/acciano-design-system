@@ -141,7 +141,8 @@ Componentes que dependem ou compõem outros elementos do DS.
 - ✅ Chromatic configurado — Storybook publicado em `https://main--6a0dbefde23c1c4677b98a9e.chromatic.com`
 - ✅ GitHub Actions — workflow `chromatic.yml` com deploy automático a cada push para `main`
 - ✅ `CHROMATIC_PROJECT_TOKEN` configurado como secret no GitHub (não exposto no código)
-- ✅ `docs/decisions/` — pasta criada para ADRs (Architecture Decision Records)
+- ✅ docs/decisions/ — pasta criada para ADRs (Architecture Decision Records)
+- ✅ ADRs escritas (14): 001 monorepo npm workspaces, 002 tokens as independent package, 003 css modules no css in js, 004 no third party component libraries, 005 token layered architecture, 006 icons as independent package, 007 dropdowns via react portal, 008 storybook deploy chromatic, 009 color tokens light/dark, 010 typography via media query, 011 logos as independent package, 012 elevation tokens, 013 storybook with vite, 014 tokens dist versioned
 - ✅ Ordem de build corrigida no monorepo: `tokens → icons → logos → components`
 - ✅ Auditoria de `title` nas stories (2026-05-20): todos os 56 `.stories.tsx` em `packages/components/src` têm `title:` explícito no meta
 
