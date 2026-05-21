@@ -24,7 +24,7 @@ O Acciano serve como:
 - ✅ Tokens de design (Style Dictionary → 7 arquivos CSS: base, foundations, typography desktop+mobile, color light+dark, elevation)
 - ✅ Layout grids (tokens em foundations.css + story de documentação no Storybook)
 - ✅ 50+ componentes React implementados e documentados no Storybook
-- ✅ Storybook configurado com addon-themes (light/dark), addon-a11y, addon-docs, DocsPage global
+- ✅ Storybook configurado com addon-themes (light/dark), addon-a11y, addon-docs, addon-vitest, DocsPage global
 - ✅ Repositório público no GitHub
 - ✅ Storybook publicado via Chromatic com deploy automático
 
@@ -131,6 +131,16 @@ Componentes que dependem ou compõem outros elementos do DS.
 - ✅ `Navigation Header` — NavigationHeaderItem + NavigationHeader (Desktop/MobileClosed/MobileOpen)
 - ✅ `Footer` — 3 sizes (Small/Large/About) × 3 devices; brand icons SVG inline
 - ✅ `Hero` — 5 tipos × 3 devices; slot-based API (emailSlot, buttonsSlot, socialSlot, tag)
+
+### Fase 13 — Testes automatizados de acessibilidade ✅
+
+- ✅ `@storybook/addon-vitest` + `vitest` + `playwright` + `@vitest/browser-playwright` instalados em `apps/storybook`
+- ✅ `vitest.config.ts` — `storybookTest` plugin + Playwright Chromium headless
+- ✅ `vitest.shims.d.ts` — shim de tipo para `@vitest/browser-playwright`
+- ✅ `packages/components/src/storybook/a11y.ts` — exporta `disabledA11y` (suprime `color-contrast` do axe para elementos disabled, isenção WCAG 2.1 critério 1.4.3)
+- ✅ `preview.ts` global — `a11y: { test: "error" }`: falhas de a11y viram erros de teste
+- ✅ `disabledA11y` aplicado nas 10 stories de estado disabled: TextInput (×2), TextArea (×2), Select, Autocomplete, Stepper, Slider, DatePicker, Accordion
+- ✅ `.gitignore` atualizado — `*.log` e `apps/storybook/*.txt` ignorados
 
 ### Fase 12 — Infraestrutura e publicação ✅
 

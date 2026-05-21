@@ -37,6 +37,9 @@ acciano-design-system/
 │   │   │   │   │   ├── Button.stories.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── [OutroComponente]/
+│   │   │   ├── storybook/          # Utilitários exclusivos para stories
+│   │   │   │   ├── lucide-icons.ts # Mapping de ícones Lucide para argTypes
+│   │   │   │   └── a11y.ts         # disabledA11y — suprime color-contrast em disabled
 │   │   │   ├── hooks/              # Hooks utilitários dos componentes
 │   │   │   ├── utils/              # Funções auxiliares
 │   │   │   └── index.ts            # Barrel export
@@ -75,6 +78,8 @@ acciano-design-system/
 │       │   ├── main.ts
 │       │   ├── preview.ts
 │       │   └── globals.d.ts        # declare module "*.css" — suprime erros TS nos imports de CSS
+│       ├── vitest.config.ts        # storybookTest plugin + Playwright Chromium headless
+│       ├── vitest.shims.d.ts       # /// <reference types="@vitest/browser-playwright" />
 │       └── package.json
 │
 ├── docs/                           # Documentação interna do projeto

@@ -16,6 +16,15 @@
 | **GitHub**      | Versionamento e repositório remoto          |
 | **Storybook**   | Documentação interativa dos componentes     |
 
+## Ferramentas de Teste
+
+| Ferramenta                   | Uso                                                                                 |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| **Vitest**                   | Test runner; configurado via `apps/storybook/vitest.config.ts`                      |
+| **@storybook/addon-vitest**  | Plugin que executa stories como testes (inclui assertions a11y via `addon-a11y`)    |
+| **Playwright (Chromium)**    | Browser headless para renderização real das stories durante os testes               |
+| **axe-core** (via addon-a11y)| Motor de análise de acessibilidade; configurado globalmente com `test: "error"`     |
+
 ## Linguagem e Framework
 
 | Item                      | Escolha                                                                                     |
