@@ -1,12 +1,12 @@
-import React from 'react';
-import clsx from 'clsx';
-import { createPortal } from 'react-dom';
-import { Search, X, AlertCircle } from 'lucide-react';
-import { Tag } from '../Tag/Tag';
-import { DropdownMenuList } from '../DropdownMenu/DropdownMenuList';
-import type { DropdownItemConfig } from '../DropdownMenu/DropdownMenuList';
-import { useDropdownPosition } from '../DropdownMenu/useDropdownPosition';
-import styles from './Autocomplete.module.css';
+import React from "react";
+import clsx from "clsx";
+import { createPortal } from "react-dom";
+import { Search, X, AlertCircle } from "lucide-react";
+import { Tag } from "../Tag/Tag";
+import { DropdownMenuList } from "../DropdownMenu/DropdownMenuList";
+import type { DropdownItemConfig } from "../DropdownMenu/DropdownMenuList";
+import { useDropdownPosition } from "../DropdownMenu/useDropdownPosition";
+import styles from "./Autocomplete.module.css";
 
 export interface AutocompleteOption {
   value: string;
@@ -14,7 +14,7 @@ export interface AutocompleteOption {
 }
 
 export interface AutocompleteProps {
-  mode?: 'Single' | 'Multiple';
+  mode?: "Single" | "Multiple";
   label?: string;
   hideLabel?: boolean;
   required?: boolean;
@@ -44,7 +44,7 @@ export interface AutocompleteProps {
 }
 
 export const Autocomplete: React.FC<AutocompleteProps> = ({
-  mode = 'Single',
+  mode = "Single",
   label,
   hideLabel = false,
   required = false,
@@ -69,33 +69,35 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const id = idProp ?? generatedId;
 
   // ── Single mode ────────────────────────────────────────────────────────────
-  const isControlledSingle = mode === 'Single' && value !== undefined;
+  const isControlledSingle = mode === "Single" && value !== undefined;
   const [internalSingleValue, setInternalSingleValue] = React.useState<string>(
-    defaultValue ?? '',
+    defaultValue ?? "",
   );
   const currentSingleValue = isControlledSingle ? value! : internalSingleValue;
 
   // ── Multiple mode ──────────────────────────────────────────────────────────
-  const isControlledMultiple = mode === 'Multiple' && values !== undefined;
-  const [internalMultipleValues, setInternalMultipleValues] = React.useState<string[]>(
-    defaultValues ?? [],
-  );
-  const currentMultipleValues = isControlledMultiple ? values! : internalMultipleValues;
+  const isControlledMultiple = mode === "Multiple" && values !== undefined;
+  const [internalMultipleValues, setInternalMultipleValues] = React.useState<
+    string[]
+  >(defaultValues ?? []);
+  const currentMultipleValues = isControlledMultiple
+    ? values!
+    : internalMultipleValues;
 
   // ── Input text (for display + filtering) ──────────────────────────────────
   const [inputText, setInputText] = React.useState(() => {
-    if (mode === 'Single') {
-      const init = value ?? defaultValue ?? '';
-      return options.find((o) => o.value === init)?.label ?? '';
+    if (mode === "Single") {
+      const init = value ?? defaultValue ?? "";
+      return options.find((o) => o.value === init)?.label ?? "";
     }
-    return '';
+    return "";
   });
 
   // Sync input text when controlled single value changes externally
   React.useEffect(() => {
     if (isControlledSingle) {
       const opt = options.find((o) => o.value === value);
-      setInputText(opt?.label ?? '');
+      setInputText(opt?.label ?? "");
     }
   }, [value, isControlledSingle, options]);
 
@@ -104,7 +106,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const fieldWrapRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const listRef = React.useRef<HTMLDivElement>(null);
-  const listStyle = useDropdownPosition(fieldWrapRef, isOpen, 'BottomLeft');
+  const listStyle = useDropdownPosition(fieldWrapRef, isOpen, "BottomLeft");
 
   const filteredOptions = React.useMemo(() => {
     const text = inputText.toLowerCase().trim();
@@ -125,14 +127,14 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     setInputText(text);
     setIsOpen(true);
     // Clear committed single value when user edits the text
-    if (mode === 'Single' && currentSingleValue) {
-      if (!isControlledSingle) setInternalSingleValue('');
+    if (mode === "Single" && currentSingleValue) {
+      if (!isControlledSingle) setInternalSingleValue("");
     }
   };
 
   const handleSelectSingle = (val: string) => {
     const opt = options.find((o) => o.value === val);
-    setInputText(opt?.label ?? '');
+    setInputText(opt?.label ?? "");
     if (!isControlledSingle) setInternalSingleValue(val);
     onChange?.(val);
     setIsOpen(false);
@@ -171,28 +173,28 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
   // Close on Escape
   React.useEffect(() => {
     if (!isOpen) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setIsOpen(false);
         inputRef.current?.blur();
       }
     };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
   }, [isOpen]);
 
   // ── Dropdown items ─────────────────────────────────────────────────────────
   const items: DropdownItemConfig[] = filteredOptions.map((opt) => {
-    if (mode === 'Multiple') {
+    if (mode === "Multiple") {
       return {
-        type: 'Checkbox' as const,
+        type: "Checkbox" as const,
         label: opt.label,
         checked: currentMultipleValues.includes(opt.value),
         onCheckedChange: (checked: boolean) =>
@@ -200,7 +202,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       };
     }
     return {
-      type: 'Single' as const,
+      type: "Single" as const,
       label: opt.label,
       onClick: () => handleSelectSingle(opt.value),
     };
@@ -210,15 +212,15 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     options.find((o) => o.value === val)?.label ?? val;
 
   const hasMultipleValues =
-    mode === 'Multiple' && currentMultipleValues.length > 0;
+    mode === "Multiple" && currentMultipleValues.length > 0;
 
-  const helperRole = disabled ? 'disabled' : error ? 'critical' : 'hint';
+  const helperRole = disabled ? "disabled" : error ? "critical" : "hint";
 
   return (
     <div
       className={clsx(
         styles.root,
-        disabled && styles['root--disabled'],
+        disabled && styles["root--disabled"],
         className,
       )}
     >
@@ -236,9 +238,13 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         <div
           className={clsx(
             styles.field,
-            error && !disabled && styles['field--critical'],
-            disabled && styles['field--disabled'],
+            error && !disabled && styles["field--critical"],
+            disabled && styles["field--disabled"],
           )}
+          role="combobox"
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
+          aria-owns={showDropdown ? `${id}-listbox` : undefined}
           onClick={() => inputRef.current?.focus()}
         >
           <div className={styles.content}>
@@ -246,14 +252,16 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
             <div className={styles.inputArea}>
               {/* Multiple: up to maxVisibleTags tags + +N chip */}
-              {mode === 'Multiple' && hasMultipleValues && (
+              {mode === "Multiple" && hasMultipleValues && (
                 <div className={styles.tagGroup}>
                   {currentMultipleValues.slice(0, maxVisibleTags).map((val) => (
                     <Tag
                       key={val}
                       size="Medium"
                       label={labelOfValue(val)}
-                      onDismiss={!disabled ? () => handleRemoveTag(val) : undefined}
+                      onDismiss={
+                        !disabled ? () => handleRemoveTag(val) : undefined
+                      }
                       disabled={disabled}
                     />
                   ))}
@@ -268,7 +276,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
               <input
                 ref={inputRef}
                 id={id}
-                name={mode === 'Single' ? name : undefined}
+                name={mode === "Single" ? name : undefined}
                 type="text"
                 className={styles.input}
                 value={inputText}
@@ -277,8 +285,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                 disabled={disabled}
                 placeholder={!hasMultipleValues ? placeholder : undefined}
                 aria-autocomplete="list"
-                aria-expanded={isOpen}
-                aria-haspopup="listbox"
                 aria-describedby={helperText ? `${id}-helper` : undefined}
                 autoComplete="off"
               />
@@ -308,12 +314,12 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           id={`${id}-helper`}
           className={clsx(
             styles.helper,
-            helperRole === 'critical' && styles['helper--critical'],
-            helperRole === 'disabled' && styles['helper--disabled'],
+            helperRole === "critical" && styles["helper--critical"],
+            helperRole === "disabled" && styles["helper--disabled"],
           )}
-          aria-live={helperRole === 'critical' ? 'polite' : undefined}
+          aria-live={helperRole === "critical" ? "polite" : undefined}
         >
-          {helperRole === 'critical' && (
+          {helperRole === "critical" && (
             <AlertCircle size={20} className={styles.helperIcon} />
           )}
           <span>{helperText}</span>
@@ -321,14 +327,20 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       )}
 
       {/* Multiple mode: hidden inputs for form integration */}
-      {mode === 'Multiple' && name &&
+      {mode === "Multiple" &&
+        name &&
         currentMultipleValues.map((val) => (
           <input key={val} type="hidden" name={name} value={val} />
         ))}
 
       {showDropdown &&
         createPortal(
-          <div ref={listRef} style={listStyle} role="listbox">
+          <div
+            ref={listRef}
+            style={listStyle}
+            role="listbox"
+            id={`${id}-listbox`}
+          >
             <DropdownMenuList items={items} width={fieldWidth} />
           </div>,
           document.body,

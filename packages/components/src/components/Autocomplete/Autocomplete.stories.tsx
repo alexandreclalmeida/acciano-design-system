@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Autocomplete } from "./Autocomplete";
+import { disabledA11y } from "../../storybook/a11y";
 
 const COUNTRY_OPTIONS = [
   { value: "br", label: "Brazil" },
@@ -101,6 +102,7 @@ export const Critical: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Country",
     placeholder: "Search…",

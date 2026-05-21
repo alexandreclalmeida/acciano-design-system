@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Slider } from "./Slider";
+import { disabledA11y } from "../../storybook/a11y";
 
 const meta: Meta<typeof Slider> = {
   title: "Components/Slider",
@@ -58,5 +59,6 @@ export const WithoutLabel: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: { label: "Label", defaultValue: 50, disabled: true },
 };

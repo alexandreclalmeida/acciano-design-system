@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Mail, Eye } from "lucide-react";
 import { ICON_OPTIONS, ICON_MAPPING } from "../../storybook/lucide-icons";
 import { TextInput } from "./TextInput";
+import { disabledA11y } from "../../storybook/a11y";
 
 const meta: Meta<typeof TextInput> = {
   title: "Components/Text input",
@@ -123,6 +124,7 @@ export const FilledCritical: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Label",
     placeholder: "Placeholder",
@@ -132,6 +134,7 @@ export const Disabled: Story = {
 };
 
 export const FilledDisabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Label",
     defaultValue: "Locked value",

@@ -1,12 +1,12 @@
-import React from 'react';
-import clsx from 'clsx';
-import { createPortal } from 'react-dom';
-import { ChevronDown, ChevronUp, X, AlertCircle } from 'lucide-react';
-import { Tag } from '../Tag/Tag';
-import { DropdownMenuList } from '../DropdownMenu/DropdownMenuList';
-import type { DropdownItemConfig } from '../DropdownMenu/DropdownMenuList';
-import { useDropdownPosition } from '../DropdownMenu/useDropdownPosition';
-import styles from './Combobox.module.css';
+import React from "react";
+import clsx from "clsx";
+import { createPortal } from "react-dom";
+import { ChevronDown, ChevronUp, X, AlertCircle } from "lucide-react";
+import { Tag } from "../Tag/Tag";
+import { DropdownMenuList } from "../DropdownMenu/DropdownMenuList";
+import type { DropdownItemConfig } from "../DropdownMenu/DropdownMenuList";
+import { useDropdownPosition } from "../DropdownMenu/useDropdownPosition";
+import styles from "./Combobox.module.css";
 
 export interface ComboboxOption {
   value: string;
@@ -14,7 +14,7 @@ export interface ComboboxOption {
 }
 
 export interface ComboboxProps {
-  mode?: 'Single' | 'Multiple';
+  mode?: "Single" | "Multiple";
   label?: string;
   hideLabel?: boolean;
   required?: boolean;
@@ -44,7 +44,7 @@ export interface ComboboxProps {
 }
 
 export const Combobox: React.FC<ComboboxProps> = ({
-  mode = 'Single',
+  mode = "Single",
   label,
   hideLabel = false,
   required = false,
@@ -67,25 +67,30 @@ export const Combobox: React.FC<ComboboxProps> = ({
 }) => {
   const generatedId = React.useId();
   const id = idProp ?? generatedId;
+  const labelId = `${id}-label`;
 
   // ── Single mode ────────────────────────────────────────────────────────────
-  const isControlledSingle = mode === 'Single' && value !== undefined;
-  const [internalSingleValue, setInternalSingleValue] = React.useState(defaultValue ?? '');
+  const isControlledSingle = mode === "Single" && value !== undefined;
+  const [internalSingleValue, setInternalSingleValue] = React.useState(
+    defaultValue ?? "",
+  );
   const currentSingleValue = isControlledSingle ? value! : internalSingleValue;
 
   // ── Multiple mode ──────────────────────────────────────────────────────────
-  const isControlledMultiple = mode === 'Multiple' && values !== undefined;
-  const [internalMultipleValues, setInternalMultipleValues] = React.useState<string[]>(
-    defaultValues ?? [],
-  );
-  const currentMultipleValues = isControlledMultiple ? values! : internalMultipleValues;
+  const isControlledMultiple = mode === "Multiple" && values !== undefined;
+  const [internalMultipleValues, setInternalMultipleValues] = React.useState<
+    string[]
+  >(defaultValues ?? []);
+  const currentMultipleValues = isControlledMultiple
+    ? values!
+    : internalMultipleValues;
 
   // ── Dropdown ───────────────────────────────────────────────────────────────
   const [isOpen, setIsOpen] = React.useState(false);
   const fieldWrapRef = React.useRef<HTMLDivElement>(null);
   const fieldRef = React.useRef<HTMLDivElement>(null);
   const listRef = React.useRef<HTMLDivElement>(null);
-  const listStyle = useDropdownPosition(fieldWrapRef, isOpen, 'BottomLeft');
+  const listStyle = useDropdownPosition(fieldWrapRef, isOpen, "BottomLeft");
   const fieldWidth = fieldWrapRef.current?.offsetWidth;
 
   // ── Interactions ───────────────────────────────────────────────────────────
@@ -94,7 +99,7 @@ export const Combobox: React.FC<ComboboxProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       toggle();
     }
@@ -137,59 +142,64 @@ export const Combobox: React.FC<ComboboxProps> = ({
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
   // Close on Escape
   React.useEffect(() => {
     if (!isOpen) return;
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setIsOpen(false);
         fieldRef.current?.blur();
       }
     };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
   }, [isOpen]);
 
   // ── Dropdown items ─────────────────────────────────────────────────────────
   const items: DropdownItemConfig[] = options.map((opt) => {
-    if (mode === 'Multiple') {
+    if (mode === "Multiple") {
       return {
-        type: 'Checkbox' as const,
+        type: "Checkbox" as const,
         label: opt.label,
         checked: currentMultipleValues.includes(opt.value),
-        onCheckedChange: (checked: boolean) => handleToggleMultiple(opt.value, checked),
+        onCheckedChange: (checked: boolean) =>
+          handleToggleMultiple(opt.value, checked),
       };
     }
     return {
-      type: 'Single' as const,
+      type: "Single" as const,
       label: opt.label,
       onClick: () => handleSelectSingle(opt.value),
     };
   });
 
-  const labelOfValue = (val: string) => options.find((o) => o.value === val)?.label ?? val;
+  const labelOfValue = (val: string) =>
+    options.find((o) => o.value === val)?.label ?? val;
 
   const selectedLabel =
-    mode === 'Single' ? options.find((o) => o.value === currentSingleValue)?.label : undefined;
+    mode === "Single"
+      ? options.find((o) => o.value === currentSingleValue)?.label
+      : undefined;
 
-  const hasMultipleValues = mode === 'Multiple' && currentMultipleValues.length > 0;
+  const hasMultipleValues =
+    mode === "Multiple" && currentMultipleValues.length > 0;
 
-  const helperRole = disabled ? 'disabled' : error ? 'critical' : 'hint';
+  const helperRole = disabled ? "disabled" : error ? "critical" : "hint";
 
   return (
     <div
       className={clsx(
         styles.root,
-        disabled && styles['root--disabled'],
+        disabled && styles["root--disabled"],
         className,
       )}
     >
       {!hideLabel && label && (
-        <label htmlFor={id} className={styles.label}>
+        <label htmlFor={id} id={labelId} className={styles.label}>
           <span className={styles.labelText}>{label}</span>
           {required && <span className={styles.labelRequired}>*</span>}
           {optional && !required && (
@@ -204,8 +214,8 @@ export const Combobox: React.FC<ComboboxProps> = ({
           id={id}
           className={clsx(
             styles.field,
-            error && !disabled && styles['field--critical'],
-            disabled && styles['field--disabled'],
+            error && !disabled && styles["field--critical"],
+            disabled && styles["field--disabled"],
           )}
           onClick={toggle}
           onKeyDown={handleKeyDown}
@@ -213,34 +223,39 @@ export const Combobox: React.FC<ComboboxProps> = ({
           role="combobox"
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          aria-labelledby={label && !hideLabel ? labelId : undefined}
           aria-disabled={disabled || undefined}
           aria-describedby={helperText ? `${id}-helper` : undefined}
         >
           <div className={styles.content}>
-            {mode === 'Single' && (
+            {mode === "Single" && (
               <span
                 className={clsx(
                   styles.valueText,
-                  !selectedLabel && styles['valueText--placeholder'],
+                  !selectedLabel && styles["valueText--placeholder"],
                 )}
               >
-                {selectedLabel ?? placeholder ?? ''}
+                {selectedLabel ?? placeholder ?? ""}
               </span>
             )}
 
-            {mode === 'Multiple' && (
+            {mode === "Multiple" && (
               <div className={styles.inputArea}>
                 {hasMultipleValues && (
                   <div className={styles.tagGroup}>
-                    {currentMultipleValues.slice(0, maxVisibleTags).map((val) => (
-                      <Tag
-                        key={val}
-                        size="Medium"
-                        label={labelOfValue(val)}
-                        onDismiss={!disabled ? () => handleRemoveTag(val) : undefined}
-                        disabled={disabled}
-                      />
-                    ))}
+                    {currentMultipleValues
+                      .slice(0, maxVisibleTags)
+                      .map((val) => (
+                        <Tag
+                          key={val}
+                          size="Medium"
+                          label={labelOfValue(val)}
+                          onDismiss={
+                            !disabled ? () => handleRemoveTag(val) : undefined
+                          }
+                          disabled={disabled}
+                        />
+                      ))}
                     {currentMultipleValues.length > maxVisibleTags && (
                       <span className={styles.overflowCount}>
                         +{currentMultipleValues.length - maxVisibleTags}
@@ -251,7 +266,7 @@ export const Combobox: React.FC<ComboboxProps> = ({
               </div>
             )}
 
-            {mode === 'Multiple' && hasMultipleValues && !disabled && (
+            {mode === "Multiple" && hasMultipleValues && !disabled && (
               <div className={styles.auxiliar}>
                 <button
                   type="button"
@@ -282,12 +297,12 @@ export const Combobox: React.FC<ComboboxProps> = ({
           id={`${id}-helper`}
           className={clsx(
             styles.helper,
-            helperRole === 'critical' && styles['helper--critical'],
-            helperRole === 'disabled' && styles['helper--disabled'],
+            helperRole === "critical" && styles["helper--critical"],
+            helperRole === "disabled" && styles["helper--disabled"],
           )}
-          aria-live={helperRole === 'critical' ? 'polite' : undefined}
+          aria-live={helperRole === "critical" ? "polite" : undefined}
         >
-          {helperRole === 'critical' && (
+          {helperRole === "critical" && (
             <AlertCircle size={20} className={styles.helperIcon} />
           )}
           <span>{helperText}</span>
@@ -295,17 +310,24 @@ export const Combobox: React.FC<ComboboxProps> = ({
       )}
 
       {/* Hidden inputs for form integration */}
-      {mode === 'Single' && name && (
+      {mode === "Single" && name && (
         <input type="hidden" name={name} value={currentSingleValue} />
       )}
-      {mode === 'Multiple' && name &&
+      {mode === "Multiple" &&
+        name &&
         currentMultipleValues.map((val) => (
           <input key={val} type="hidden" name={name} value={val} />
         ))}
 
-      {isOpen && options.length > 0 &&
+      {isOpen &&
+        options.length > 0 &&
         createPortal(
-          <div ref={listRef} style={listStyle} role="listbox">
+          <div
+            ref={listRef}
+            style={listStyle}
+            role="listbox"
+            id={`${id}-listbox`}
+          >
             <DropdownMenuList items={items} width={fieldWidth} />
           </div>,
           document.body,

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Accordion, AccordionItem } from "./Accordion";
+import { disabledA11y } from "../../storybook/a11y";
 
 const LOREM =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -81,6 +82,7 @@ export const MultipleOpen: Story = {
 };
 
 export const WithDisabled: Story = {
+  parameters: { ...disabledA11y },
   render: () => (
     <div style={{ maxWidth: "600px", width: "100%" }}>
       <Accordion>

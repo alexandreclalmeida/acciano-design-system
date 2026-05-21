@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { TextArea } from "./TextArea";
+import { disabledA11y } from "../../storybook/a11y";
 
 const meta: Meta<typeof TextArea> = {
   title: "Components/Text area",
@@ -108,6 +109,7 @@ export const FilledCritical: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Label",
     placeholder: "Placeholder",
@@ -117,6 +119,7 @@ export const Disabled: Story = {
 };
 
 export const FilledDisabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Label",
     defaultValue: "Locked content that cannot be edited.",

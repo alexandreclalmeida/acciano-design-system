@@ -1,16 +1,18 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './LoadingBar.module.css';
+import React from "react";
+import clsx from "clsx";
+import styles from "./LoadingBar.module.css";
 
 export interface LoadingBarProps {
   value?: number;
   showLabel?: boolean;
+  label?: string;
   className?: string;
 }
 
 export const LoadingBar: React.FC<LoadingBarProps> = ({
   value = 0,
   showLabel = true,
+  label = "Loading",
   className,
 }) => {
   const clamped = Math.min(100, Math.max(0, value));
@@ -18,6 +20,7 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
   return (
     <div
       role="progressbar"
+      aria-label={label}
       aria-valuenow={clamped}
       aria-valuemin={0}
       aria-valuemax={100}
@@ -26,9 +29,7 @@ export const LoadingBar: React.FC<LoadingBarProps> = ({
       <div className={styles.track}>
         <div className={styles.bar} style={{ width: `${clamped}%` }} />
       </div>
-      {showLabel && (
-        <span className={styles.label}>{clamped}%</span>
-      )}
+      {showLabel && <span className={styles.label}>{clamped}%</span>}
     </div>
   );
 };

@@ -1,16 +1,16 @@
-import React from 'react';
-import clsx from 'clsx';
-import { ArrowUpDown, MoveUp, MoveDown } from 'lucide-react';
-import { Checkbox } from '../Checkbox/Checkbox';
-import { Pagination } from '../Pagination/Pagination';
-import styles from './Table.module.css';
+import React from "react";
+import clsx from "clsx";
+import { ArrowUpDown, MoveUp, MoveDown } from "lucide-react";
+import { Checkbox } from "../Checkbox/Checkbox";
+import { Pagination } from "../Pagination/Pagination";
+import styles from "./Table.module.css";
 
 // ─── Types ─────────────────────────────────────────
 
-export type TableStyle = 'Default' | 'Striped';
-export type TableSortDirection = 'asc' | 'desc';
-export type TableCellAlign = 'left' | 'right';
-export type TableCellGap = 'sm' | 'md';
+export type TableStyle = "Default" | "Striped";
+export type TableSortDirection = "asc" | "desc";
+export type TableCellAlign = "left" | "right";
+export type TableCellGap = "sm" | "md";
 
 export interface TableColumnDef {
   id: string;
@@ -27,42 +27,46 @@ export interface TableColumnDef {
 
 export interface TableHeadingCellProps {
   align?: TableCellAlign;
-  sortable?: 'No' | 'Yes' | 'Up' | 'Down';
+  sortable?: "No" | "Yes" | "Up" | "Down";
   onSort?: () => void;
   isCheckbox?: boolean;
   children?: React.ReactNode;
   className?: string;
+  "aria-label"?: string;
 }
 
 export const TableHeadingCell: React.FC<TableHeadingCellProps> = ({
-  align = 'left',
-  sortable = 'No',
+  align = "left",
+  sortable = "No",
   onSort,
   isCheckbox = false,
   children,
   className,
+  "aria-label": ariaLabel,
 }) => {
-  const isSortable = sortable !== 'No';
-  const isRight = align === 'right';
+  const isSortable = sortable !== "No";
+  const isRight = align === "right";
 
   const ariaSort =
-    sortable === 'Up' ? ('ascending' as const) :
-    sortable === 'Down' ? ('descending' as const) :
-    isSortable ? ('none' as const) :
-    undefined;
+    sortable === "Up"
+      ? ("ascending" as const)
+      : sortable === "Down"
+        ? ("descending" as const)
+        : isSortable
+          ? ("none" as const)
+          : undefined;
 
   const SortIcon =
-    sortable === 'Up' ? MoveUp :
-    sortable === 'Down' ? MoveDown :
-    ArrowUpDown;
+    sortable === "Up" ? MoveUp : sortable === "Down" ? MoveDown : ArrowUpDown;
 
   return (
     <th
       scope="col"
       aria-sort={ariaSort}
+      aria-label={ariaLabel}
       className={clsx(
         styles.headingCell,
-        isCheckbox && styles['headingCell--checkbox'],
+        isCheckbox && styles["headingCell--checkbox"],
         className,
       )}
     >
@@ -71,14 +75,20 @@ export const TableHeadingCell: React.FC<TableHeadingCellProps> = ({
       ) : isSortable ? (
         <button
           type="button"
-          className={clsx(styles.sortButton, isRight && styles['sortButton--right'])}
+          className={clsx(
+            styles.sortButton,
+            isRight && styles["sortButton--right"],
+          )}
           onClick={onSort}
         >
           {isRight && (
             <SortIcon
               size={16}
               aria-hidden
-              className={clsx(styles.sortIcon, sortable !== 'Yes' && styles['sortIcon--active'])}
+              className={clsx(
+                styles.sortIcon,
+                sortable !== "Yes" && styles["sortIcon--active"],
+              )}
             />
           )}
           <span className={styles.headingText}>{children}</span>
@@ -86,12 +96,20 @@ export const TableHeadingCell: React.FC<TableHeadingCellProps> = ({
             <SortIcon
               size={16}
               aria-hidden
-              className={clsx(styles.sortIcon, sortable !== 'Yes' && styles['sortIcon--active'])}
+              className={clsx(
+                styles.sortIcon,
+                sortable !== "Yes" && styles["sortIcon--active"],
+              )}
             />
           )}
         </button>
       ) : (
-        <div className={clsx(styles.headingCellInner, isRight && styles['headingCellInner--right'])}>
+        <div
+          className={clsx(
+            styles.headingCellInner,
+            isRight && styles["headingCellInner--right"],
+          )}
+        >
           <span className={styles.headingText}>{children}</span>
         </div>
       )}
@@ -111,7 +129,7 @@ export interface TableDataCellProps {
 }
 
 export const TableDataCell: React.FC<TableDataCellProps> = ({
-  align = 'left',
+  align = "left",
   gap,
   alternate = false,
   isCheckbox = false,
@@ -121,17 +139,17 @@ export const TableDataCell: React.FC<TableDataCellProps> = ({
   <td
     className={clsx(
       styles.dataCell,
-      alternate && styles['dataCell--alternate'],
-      isCheckbox && styles['dataCell--checkbox'],
+      alternate && styles["dataCell--alternate"],
+      isCheckbox && styles["dataCell--checkbox"],
       className,
     )}
   >
     <div
       className={clsx(
         styles.dataCellInner,
-        align === 'right' && styles['dataCellInner--right'],
-        gap === 'sm' && styles['dataCellInner--gap-sm'],
-        gap === 'md' && styles['dataCellInner--gap-md'],
+        align === "right" && styles["dataCellInner--right"],
+        gap === "sm" && styles["dataCellInner--gap-sm"],
+        gap === "md" && styles["dataCellInner--gap-md"],
       )}
     >
       {children}
@@ -163,7 +181,10 @@ export interface TableProps {
   sortDirection?: TableSortDirection;
   defaultSortColumnId?: string;
   defaultSortDirection?: TableSortDirection;
-  onSortChange?: (columnId: string | null, direction: TableSortDirection | null) => void;
+  onSortChange?: (
+    columnId: string | null,
+    direction: TableSortDirection | null,
+  ) => void;
   // Pagination
   pagination?: TablePaginationProps;
   className?: string;
@@ -172,7 +193,7 @@ export interface TableProps {
 export const Table: React.FC<TableProps> = ({
   columns,
   rows,
-  style = 'Default',
+  style = "Default",
   selectable = false,
   selectedRows: selectedRowsProp,
   defaultSelectedRows,
@@ -187,10 +208,12 @@ export const Table: React.FC<TableProps> = ({
 }) => {
   // ── Selection ────────────────────────────────────
   const isSelectionControlled = selectedRowsProp !== undefined;
-  const [uncontrolledSelected, setUncontrolledSelected] = React.useState<number[]>(
-    defaultSelectedRows ?? [],
-  );
-  const selectedRows = isSelectionControlled ? selectedRowsProp : uncontrolledSelected;
+  const [uncontrolledSelected, setUncontrolledSelected] = React.useState<
+    number[]
+  >(defaultSelectedRows ?? []);
+  const selectedRows = isSelectionControlled
+    ? selectedRowsProp
+    : uncontrolledSelected;
 
   const commitSelection = (next: number[]) => {
     if (!isSelectionControlled) setUncontrolledSelected(next);
@@ -198,24 +221,29 @@ export const Table: React.FC<TableProps> = ({
   };
 
   const allSelected = rows.length > 0 && selectedRows.length === rows.length;
-  const someSelected = selectedRows.length > 0 && selectedRows.length < rows.length;
+  const someSelected =
+    selectedRows.length > 0 && selectedRows.length < rows.length;
 
-  const toggleAll = () => commitSelection(allSelected ? [] : rows.map((_, i) => i));
+  const toggleAll = () =>
+    commitSelection(allSelected ? [] : rows.map((_, i) => i));
   const toggleRow = (i: number) =>
     commitSelection(
-      selectedRows.includes(i) ? selectedRows.filter((r) => r !== i) : [...selectedRows, i],
+      selectedRows.includes(i)
+        ? selectedRows.filter((r) => r !== i)
+        : [...selectedRows, i],
     );
 
   // ── Sort ─────────────────────────────────────────
   const isSortControlled = sortColumnIdProp !== undefined;
-  const [uncontrolledSortId, setUncontrolledSortId] = React.useState<string | null>(
-    defaultSortColumnId ?? null,
-  );
-  const [uncontrolledSortDir, setUncontrolledSortDir] = React.useState<TableSortDirection | null>(
-    defaultSortDirection ?? null,
-  );
+  const [uncontrolledSortId, setUncontrolledSortId] = React.useState<
+    string | null
+  >(defaultSortColumnId ?? null);
+  const [uncontrolledSortDir, setUncontrolledSortDir] =
+    React.useState<TableSortDirection | null>(defaultSortDirection ?? null);
   const sortColumnId = isSortControlled ? sortColumnIdProp : uncontrolledSortId;
-  const sortDirection = isSortControlled ? (sortDirectionProp ?? null) : uncontrolledSortDir;
+  const sortDirection = isSortControlled
+    ? (sortDirectionProp ?? null)
+    : uncontrolledSortDir;
 
   const handleSortClick = (columnId: string) => {
     let nextId: string | null;
@@ -223,10 +251,10 @@ export const Table: React.FC<TableProps> = ({
 
     if (sortColumnId !== columnId) {
       nextId = columnId;
-      nextDir = 'asc';
-    } else if (sortDirection === 'asc') {
+      nextDir = "asc";
+    } else if (sortDirection === "asc") {
       nextId = columnId;
-      nextDir = 'desc';
+      nextDir = "desc";
     } else {
       nextId = null;
       nextDir = null;
@@ -239,84 +267,91 @@ export const Table: React.FC<TableProps> = ({
     onSortChange?.(nextId, nextDir);
   };
 
-  const getSortableState = (col: TableColumnDef): 'No' | 'Yes' | 'Up' | 'Down' => {
-    if (!col.sortable) return 'No';
-    if (col.id !== sortColumnId) return 'Yes';
-    return sortDirection === 'asc' ? 'Up' : 'Down';
+  const getSortableState = (
+    col: TableColumnDef,
+  ): "No" | "Yes" | "Up" | "Down" => {
+    if (!col.sortable) return "No";
+    if (col.id !== sortColumnId) return "Yes";
+    return sortDirection === "asc" ? "Up" : "Down";
   };
 
   // ── Row style ────────────────────────────────────
   const isAlternate = (rowIndex: number) =>
-    selectedRows.includes(rowIndex) || (style === 'Striped' && rowIndex % 2 !== 0);
+    selectedRows.includes(rowIndex) ||
+    (style === "Striped" && rowIndex % 2 !== 0);
 
   return (
     <div className={clsx(styles.root, className)}>
       <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <colgroup>
-          {selectable && <col className={styles.colCheckbox} />}
-          {columns.map((col) => (
-            <col
-              key={col.id}
-              style={{
-                width: col.width,
-                minWidth: col.minWidth ?? (!col.width ? '120px' : undefined),
-              }}
-            />
-          ))}
-        </colgroup>
-
-        <thead>
-          <tr>
-            {selectable && (
-              <TableHeadingCell isCheckbox>
-                <Checkbox
-                  size="Small"
-                  checked={allSelected}
-                  indeterminate={someSelected}
-                  onChange={() => toggleAll()}
-                />
-              </TableHeadingCell>
-            )}
+        <table className={styles.table}>
+          <colgroup>
+            {selectable && <col className={styles.colCheckbox} />}
             {columns.map((col) => (
-              <TableHeadingCell
+              <col
                 key={col.id}
-                align={col.align}
-                sortable={getSortableState(col)}
-                onSort={col.sortable ? () => handleSortClick(col.id) : undefined}
-              >
-                {col.heading}
-              </TableHeadingCell>
+                style={{
+                  width: col.width,
+                  minWidth: col.minWidth ?? (!col.width ? "120px" : undefined),
+                }}
+              />
             ))}
-          </tr>
-        </thead>
+          </colgroup>
 
-        <tbody>
-          {rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+          <thead>
+            <tr>
               {selectable && (
-                <TableDataCell isCheckbox alternate={isAlternate(rowIndex)}>
+                <TableHeadingCell isCheckbox aria-label="Select all rows">
                   <Checkbox
                     size="Small"
-                    checked={selectedRows.includes(rowIndex)}
-                    onChange={() => toggleRow(rowIndex)}
+                    checked={allSelected}
+                    indeterminate={someSelected}
+                    onChange={() => toggleAll()}
+                    aria-label="Select all rows"
                   />
-                </TableDataCell>
+                </TableHeadingCell>
               )}
               {columns.map((col) => (
-                <TableDataCell
+                <TableHeadingCell
                   key={col.id}
                   align={col.align}
-                  gap={col.gap}
-                  alternate={isAlternate(rowIndex)}
+                  sortable={getSortableState(col)}
+                  onSort={
+                    col.sortable ? () => handleSortClick(col.id) : undefined
+                  }
                 >
-                  {col.cell(row, rowIndex)}
-                </TableDataCell>
+                  {col.heading}
+                </TableHeadingCell>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {rows.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {selectable && (
+                  <TableDataCell isCheckbox alternate={isAlternate(rowIndex)}>
+                    <Checkbox
+                      size="Small"
+                      checked={selectedRows.includes(rowIndex)}
+                      onChange={() => toggleRow(rowIndex)}
+                      aria-label={`Select row ${rowIndex + 1}`}
+                    />
+                  </TableDataCell>
+                )}
+                {columns.map((col) => (
+                  <TableDataCell
+                    key={col.id}
+                    align={col.align}
+                    gap={col.gap}
+                    alternate={isAlternate(rowIndex)}
+                  >
+                    {col.cell(row, rowIndex)}
+                  </TableDataCell>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       {pagination && <Pagination {...pagination} />}
     </div>

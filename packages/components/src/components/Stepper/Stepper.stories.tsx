@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Stepper } from "./Stepper";
+import { disabledA11y } from "../../storybook/a11y";
 
 const meta: Meta<typeof Stepper> = {
   title: "Components/Stepper",
@@ -85,6 +86,7 @@ export const Critical: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Quantity",
     defaultValue: 5,

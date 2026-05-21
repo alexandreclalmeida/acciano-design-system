@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { DatePicker } from "./DatePicker";
+import { disabledA11y } from "../../storybook/a11y";
 
 const EVENT_DATES = [
   new Date(2025, 3, 7), // Apr 7
@@ -91,6 +92,7 @@ export const Critical: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Date of birth",
     disabled: true,

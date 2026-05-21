@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Briefcase, User, Building2 } from "lucide-react";
 import { Select } from "./Select";
+import { disabledA11y } from "../../storybook/a11y";
 
 const COUNTRY_OPTIONS = [
   { value: "br", label: "Brazil" },
@@ -109,6 +110,7 @@ export const Critical: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: { ...disabledA11y },
   args: {
     label: "Country",
     placeholder: "Select a country",
