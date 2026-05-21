@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import { Calendar as CalendarIcon, AlertCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useDropdownPosition } from '../DropdownMenu/useDropdownPosition';
+import { getPortalContainer } from '../../utils/getPortalContainer';
 import styles from './DatePicker.module.css';
 
 // ─── Helpers ─────────────────────────────────────────────
@@ -357,7 +358,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         createPortal(
           <div
             ref={calendarRef}
-            style={{ ...calendarStyle, width: fieldWidth }}
+            style={{ ...calendarStyle, width: fieldWidth, pointerEvents: 'auto' }}
             role="dialog"
             aria-label="Choose date"
             aria-modal="true"
@@ -372,7 +373,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               eventDates={eventDates}
             />
           </div>,
-          document.body,
+          getPortalContainer(),
         )}
     </div>
   );

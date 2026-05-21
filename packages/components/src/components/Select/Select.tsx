@@ -6,6 +6,7 @@ import type { LucideIcon } from 'lucide-react';
 import { DropdownMenuList } from '../DropdownMenu/DropdownMenuList';
 import type { DropdownItemConfig } from '../DropdownMenu/DropdownMenuList';
 import { useDropdownPosition } from '../DropdownMenu/useDropdownPosition';
+import { getPortalContainer } from '../../utils/getPortalContainer';
 import styles from './Select.module.css';
 
 export interface SelectOption {
@@ -180,10 +181,10 @@ export const Select: React.FC<SelectProps> = ({
 
       {isOpen &&
         createPortal(
-          <div ref={listRef} style={listStyle} role="listbox">
+          <div ref={listRef} style={{ ...listStyle, pointerEvents: 'auto' }} role="listbox">
             <DropdownMenuList items={items} width={fieldWidth} />
           </div>,
-          document.body,
+          getPortalContainer(),
         )}
     </div>
   );

@@ -6,6 +6,7 @@ import { Tag } from "../Tag/Tag";
 import { DropdownMenuList } from "../DropdownMenu/DropdownMenuList";
 import type { DropdownItemConfig } from "../DropdownMenu/DropdownMenuList";
 import { useDropdownPosition } from "../DropdownMenu/useDropdownPosition";
+import { getPortalContainer } from "../../utils/getPortalContainer";
 import styles from "./Autocomplete.module.css";
 
 export interface AutocompleteOption {
@@ -337,13 +338,13 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         createPortal(
           <div
             ref={listRef}
-            style={listStyle}
+            style={{ ...listStyle, pointerEvents: 'auto' }}
             role="listbox"
             id={`${id}-listbox`}
           >
             <DropdownMenuList items={items} width={fieldWidth} />
           </div>,
-          document.body,
+          getPortalContainer(),
         )}
     </div>
   );

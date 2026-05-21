@@ -18,7 +18,7 @@ export function useDropdownPosition(
     const isBottom = align.startsWith('Bottom');
     const isLeft = align.endsWith('Left');
     setStyle({
-      position: 'fixed',
+      position: 'absolute',
       zIndex: 1000,
       ...(isBottom
         ? { top: rect.bottom + GAP }

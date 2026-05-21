@@ -9,6 +9,7 @@ import { AvatarDropdown } from '../AvatarDropdown/AvatarDropdown';
 import { DropdownMenuContext } from './DropdownMenuContext';
 import { useDropdownPosition } from './useDropdownPosition';
 import type { DropdownAlign } from './useDropdownPosition';
+import { getPortalContainer } from '../../utils/getPortalContainer';
 import styles from './DropdownMenu.module.css';
 
 export type { DropdownAlign };
@@ -135,10 +136,10 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
       </div>
       {isOpen &&
         createPortal(
-          <div ref={listRef} style={listStyle}>
+          <div ref={listRef} style={{ ...listStyle, pointerEvents: 'auto' }}>
             {children}
           </div>,
-          document.body,
+          getPortalContainer(),
         )}
     </DropdownMenuContext.Provider>
   );
