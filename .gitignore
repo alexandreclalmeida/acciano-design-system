@@ -4,16 +4,12 @@ packages/icons/dist/
 packages/logos/dist/
 storybook-static/
 
-# Tokens dist é versionado intencionalmente — sobrescreve a regra global
-!packages/tokens/dist/
-!packages/tokens/dist/**
-
-# Logs e relatórios locais gerados por testes e debug
-*.log
+# Relatórios locais gerados por testes e debug
 apps/storybook/*.txt
 
 # TypeScript
 *.tsbuildinfo
 
 # npm
+node_modules/
 .npm
