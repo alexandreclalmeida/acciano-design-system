@@ -132,16 +132,6 @@ Componentes que dependem ou compõem outros elementos do DS.
 - ✅ `Footer` — 3 sizes (Small/Large/About) × 3 devices; brand icons SVG inline
 - ✅ `Hero` — 5 tipos × 3 devices; slot-based API (emailSlot, buttonsSlot, socialSlot, tag)
 
-### Fase 13 — Testes automatizados de acessibilidade ✅
-
-- ✅ `@storybook/addon-vitest` + `vitest` + `playwright` + `@vitest/browser-playwright` instalados em `apps/storybook`
-- ✅ `vitest.config.ts` — `storybookTest` plugin + Playwright Chromium headless
-- ✅ `vitest.shims.d.ts` — shim de tipo para `@vitest/browser-playwright`
-- ✅ `packages/components/src/storybook/a11y.ts` — exporta `disabledA11y` (suprime `color-contrast` do axe para elementos disabled, isenção WCAG 2.1 critério 1.4.3)
-- ✅ `preview.ts` global — `a11y: { test: "error" }`: falhas de a11y viram erros de teste
-- ✅ `disabledA11y` aplicado nas 10 stories de estado disabled: TextInput (×2), TextArea (×2), Select, Autocomplete, Stepper, Slider, DatePicker, Accordion
-- ✅ `.gitignore` atualizado — `*.log` e `apps/storybook/*.txt` ignorados
-
 ### Fase 12 — Infraestrutura e publicação ✅
 
 - ✅ `.gitignore` configurado (projeto + alinhado com `.gitignore_global` do macOS/Windows)
@@ -155,6 +145,16 @@ Componentes que dependem ou compõem outros elementos do DS.
 - ✅ ADRs escritas (14): 001 monorepo npm workspaces, 002 tokens as independent package, 003 css modules no css in js, 004 no third party component libraries, 005 token layered architecture, 006 icons as independent package, 007 dropdowns via react portal, 008 storybook deploy chromatic, 009 color tokens light/dark, 010 typography via media query, 011 logos as independent package, 012 elevation tokens, 013 storybook with vite, 014 tokens dist versioned
 - ✅ Ordem de build corrigida no monorepo: `tokens → icons → logos → components`
 - ✅ Auditoria de `title` nas stories (2026-05-20): todos os 56 `.stories.tsx` em `packages/components/src` têm `title:` explícito no meta
+
+### Fase 13 — Testes automatizados de acessibilidade ✅
+
+- ✅ `@storybook/addon-vitest` + `vitest` + `playwright` + `@vitest/browser-playwright` instalados em `apps/storybook`
+- ✅ `vitest.config.ts` — `storybookTest` plugin + Playwright Chromium headless
+- ✅ `vitest.shims.d.ts` — shim de tipo para `@vitest/browser-playwright`
+- ✅ `packages/components/src/storybook/a11y.ts` — exporta `disabledA11y` (suprime `color-contrast` do axe para elementos disabled, isenção WCAG 2.1 critério 1.4.3)
+- ✅ `preview.ts` global — `a11y: { test: "error" }`: falhas de a11y viram erros de teste
+- ✅ `disabledA11y` aplicado nas 10 stories de estado disabled: TextInput (×2), TextArea (×2), Select, Autocomplete, Stepper, Slider, DatePicker, Accordion
+- ✅ `.gitignore` atualizado — `*.log` e `apps/storybook/*.txt` ignorados
 
 ---
 
