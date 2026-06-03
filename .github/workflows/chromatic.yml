@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "packages/components/**"
+      - "packages/tokens/**"
+      - "packages/icons/**"
+      - "packages/logos/**"
+      - "apps/storybook/**"
 
 jobs:
   chromatic:
@@ -28,6 +34,6 @@ jobs:
         run: npm run build:storybook
 
       - name: Publish to Chromatic
-        run: npm run chromatic
+        run: npm run chromatic -- --only-changed
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
